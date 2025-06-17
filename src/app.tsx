@@ -2,6 +2,8 @@ import {Route, Routes} from "react-router-dom";
 import {IndexPage} from "./pages";
 import {RegisterPage} from "./pages/register";
 import {LoginPage} from "./pages/login";
+import {ProtectedRoute} from "./components/auth/ProtectedRoute";
+import {DashboardPage} from "./pages/dashboard";
 
 function App() {
     return (
@@ -9,6 +11,14 @@ function App() {
             <Route element={<IndexPage />} path="/" />
             <Route element={<RegisterPage />} path="/register" />
             <Route element={<LoginPage />} path="/login" />
+            <Route
+                path="/dashboard"
+                element={
+                    <ProtectedRoute>
+                        <DashboardPage />
+                    </ProtectedRoute>
+                }
+            />
         </Routes>
     );
 }
