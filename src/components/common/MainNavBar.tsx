@@ -17,15 +17,15 @@ export const MainNavBar = () => {
     const {user, logout} = useAuthStore();
 
     return (
-        <Navbar isBordered onMenuOpenChange={setIsMenuOpen}>
+        <Navbar isBordered onMenuOpenChange={setIsMenuOpen} maxWidth="full">
             <NavbarContent>
-                <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="sm:hidden" />
+                <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="md:hidden" />
                 <NavbarBrand>
                     <FaWallet className="mr-2 text-2xl text-blue-500" />
                     <span className="text-2xl font-light text-blue-500">智慧理財</span>
                 </NavbarBrand>
             </NavbarContent>
-            <NavbarContent className="hidden gap-8 sm:flex" justify="center">
+            <NavbarContent className="hidden gap-8 md:flex" justify="center">
                 {navLinks.map(link => (
                     <NavbarItem isActive={pathname === link.href} key={link.href}>
                         <Link as={RouterLink} to={link.href} size="lg" color={pathname === link.href ? "primary" : "foreground"}>
