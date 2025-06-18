@@ -62,8 +62,7 @@ export const FilterSection: React.FC = () => {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 {/* Sort By */}
                 <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">排序方式</label>
-                    <Select size="lg" selectedKeys={[getCurrentSortKey()]} onSelectionChange={handleSortChange} placeholder="選擇排序方式">
+                    <Select size="lg" selectedKeys={[getCurrentSortKey()]} onSelectionChange={handleSortChange} label="排序方式" placeholder="選擇排序方式">
                         <SelectItem key="date_desc">日期: 新到舊</SelectItem>
                         <SelectItem key="date_asc">日期: 舊到新</SelectItem>
                         <SelectItem key="amount_desc">金額: 高到低</SelectItem>
@@ -73,8 +72,7 @@ export const FilterSection: React.FC = () => {
 
                 {/* Type Filter */}
                 <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">類型</label>
-                    <Select size="lg" selectedKeys={[filters.budget_type || "all"]} onSelectionChange={handleTypeChange} placeholder="選擇類型">
+                    <Select size="lg" selectedKeys={[filters.budget_type || "all"]} onSelectionChange={handleTypeChange} label="類型" placeholder="選擇類型">
                         <SelectItem key="all">全部類型</SelectItem>
                         <SelectItem key="income">收入</SelectItem>
                         <SelectItem key="expense">支出</SelectItem>
@@ -83,8 +81,7 @@ export const FilterSection: React.FC = () => {
 
                 {/* Category Filter */}
                 <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">分類</label>
-                    <Select size="lg" selectedKeys={[filters.category_id?.toString() || "all"]} onSelectionChange={handleCategoryChange} placeholder="選擇分類">
+                    <Select size="lg" selectedKeys={[filters.category_id?.toString() || "all"]} onSelectionChange={handleCategoryChange} label="分類" placeholder="選擇分類">
                         <SelectItem key="all">全部分類</SelectItem>
                         <React.Fragment>
                             <SelectSection title="收入">
