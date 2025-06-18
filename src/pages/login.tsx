@@ -71,7 +71,7 @@ export const LoginPage = () => {
     };
 
     return (
-        <div className="mx-auto max-w-md p-4">
+        <div className="mx-auto mt-[env(safe-area-inset-top)] max-w-md p-4">
             <Header title="歡迎回來" description="登入您的智慧理財帳戶" />
             <Card className="py-4 md:p-4">
                 {serverError && <Alert color="danger" title={serverError} />}

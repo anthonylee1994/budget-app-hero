@@ -106,7 +106,7 @@ export const RegisterPage = () => {
     };
 
     return (
-        <div className="mx-auto max-w-md p-4">
+        <div className="mx-auto mt-[env(safe-area-inset-top)] max-w-md p-4">
             <Header title="創建您的帳戶" description="開始您的智慧理財之旅" />
             <Card className="py-4 md:p-4">
                 {serverError && <Alert color="danger" title={serverError} />}
