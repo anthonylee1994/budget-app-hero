@@ -1,47 +1,17 @@
 import {create} from "zustand";
 import {persist} from "zustand/middleware";
 import {apiClient} from "../utils/apiClient";
-
-interface DonutChartItem {
-    name: string;
-    amount: number;
-    color: string;
-    percentage: number;
-}
-
-interface BarChartItem {
-    date: string; // YYYY-MM-DD for weekly/monthly, YYYY-MM for yearly
-    income: number;
-    expense: number;
-    net: number;
-}
-
-interface DonutChart {
-    income: DonutChartItem[];
-    expense: DonutChartItem[];
-}
-
-interface SummaryData {
-    total_income: number;
-    total_expenses: number;
-    net_balance: number;
-    donut_chart: DonutChart;
-    bar_chart: BarChartItem[];
-    period: "weekly" | "monthly" | "yearly";
-}
-
-interface SummaryQueryParams {
-    period: "weekly" | "monthly" | "yearly";
-    date?: string; // YYYY-MM-DD format, optional
-}
+import {SummaryData} from "@/types/SummaryData";
+import {SummaryQueryParams} from "@/types/SummaryQueryParams";
+import {Period} from "@/types/Period";
 
 interface SummaryState {
     summaryData: SummaryData | null;
     isLoading: boolean;
     error: string | null;
-    selectedPeriod: "weekly" | "monthly" | "yearly";
+    selectedPeriod: Period;
     fetchSummary: (params?: SummaryQueryParams) => Promise<SummaryData>;
-    setPeriod: (period: "weekly" | "monthly" | "yearly") => void;
+    setPeriod: (period: Period) => void;
     clearError: () => void;
 }
 

@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 export const LandingNavBar = () => {
     return (
-        <Navbar>
+        <Navbar isBordered>
             <NavbarBrand>
                 <FaWallet className="mr-2 text-2xl text-blue-500" />
                 <span className="text-2xl font-light text-blue-500">智慧理財</span>
