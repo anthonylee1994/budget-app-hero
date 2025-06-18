@@ -3,6 +3,7 @@ import {useForm, Controller} from "react-hook-form";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input, Select, SelectItem} from "@heroui/react";
 import {useCategoryStore} from "@/stores/categoryStore";
 import type {Category} from "@/types/Category";
+import {ColorPicker} from "./ColorPicker";
 
 interface EditModalProps {
     isOpen: boolean;
@@ -16,17 +17,6 @@ interface FormData {
     color: string;
 }
 
-const colorOptions = [
-    {value: "#ef4444", label: "紅色", color: "#ef4444"},
-    {value: "#f97316", label: "橙色", color: "#f97316"},
-    {value: "#eab308", label: "黃色", color: "#eab308"},
-    {value: "#22c55e", label: "綠色", color: "#22c55e"},
-    {value: "#3b82f6", label: "藍色", color: "#3b82f6"},
-    {value: "#8b5cf6", label: "紫色", color: "#8b5cf6"},
-    {value: "#ec4899", label: "粉色", color: "#ec4899"},
-    {value: "#64748b", label: "灰色", color: "#64748b"},
-];
-
 export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category}) => {
     const {createCategory, updateCategory, isLoading} = useCategoryStore();
 
@@ -34,7 +24,6 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
         control,
         handleSubmit,
         reset,
-        watch,
         formState: {errors},
     } = useForm<FormData>({
         defaultValues: {
@@ -44,8 +33,6 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
         },
         mode: "onChange",
     });
-
-    const selectedColor = watch("color");
 
     useEffect(() => {
         if (isOpen) {
@@ -59,7 +46,7 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
                 reset({
                     name: "",
                     budget_type: "expense",
-                    color: "#ef4444",
+                    color: "#F56565",
                 });
             }
         }
@@ -141,28 +128,7 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
                                 rules={{
                                     required: "請選擇顏色",
                                 }}
-                                render={({field}) => (
-                                    <div className="flex flex-col gap-2">
-                                        <label className="text-sm font-medium">
-                                            顏色 <span className="text-red-500">*</span>
-                                        </label>
-                                        <div className="grid grid-cols-4 gap-2">
-                                            {colorOptions.map(option => (
-                                                <button
-                                                    key={option.value}
-                                                    type="button"
-                                                    className={`h-12 w-full rounded-lg border-2 transition-all ${
-                                                        selectedColor === option.value ? "scale-105 border-gray-400 shadow-lg" : "border-gray-200 hover:border-gray-300"
-                                                    }`}
-                                                    style={{backgroundColor: option.color}}
-                                                    onClick={() => field.onChange(option.value)}
-                                                    title={option.label}
-                                                />
-                                            ))}
-                                        </div>
-                                        {errors.color && <p className="text-sm text-red-500">{errors.color.message}</p>}
-                                    </div>
-                                )}
+                                render={({field}) => <ColorPicker {...field} />}
                             />
                         </div>
                     </ModalBody>

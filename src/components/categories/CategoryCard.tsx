@@ -7,21 +7,10 @@ import {FaEdit, FaTrash} from "react-icons/fa";
 interface CategoryCardProps {
     category: Category;
     onEdit: (category: Category) => void;
+    onDelete: (category: Category) => void;
 }
 
-export const CategoryCard: React.FC<CategoryCardProps> = ({category, onEdit}) => {
-    const {deleteCategory, isLoading} = useCategoryStore();
-
-    const handleDelete = async () => {
-        if (window.confirm(`確定要刪除分類「${category.name}」嗎？`)) {
-            try {
-                await deleteCategory(category.id);
-            } catch (error) {
-                console.error("刪除分類失敗:", error);
-            }
-        }
-    };
-
+export const CategoryCard: React.FC<CategoryCardProps> = ({category, onEdit, onDelete}) => {
     return (
         <Card className="transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg">
             <CardBody className="gap-3">
@@ -37,11 +26,11 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({category, onEdit}) =>
                     </Chip>
                 </div>
 
-                <div className="mt-2 flex gap-2">
+                <div className="mt-2 flex justify-end gap-2">
                     <Button isIconOnly size="sm" color="primary" variant="light" onPress={() => onEdit(category)}>
                         <FaEdit />
                     </Button>
-                    <Button isIconOnly size="sm" color="danger" variant="light" onPress={handleDelete} isLoading={isLoading}>
+                    <Button isIconOnly size="sm" color="danger" variant="light" onPress={() => onDelete(category)}>
                         <FaTrash />
                     </Button>
                 </div>

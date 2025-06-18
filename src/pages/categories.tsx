@@ -1,5 +1,4 @@
 import {useState} from "react";
-import {MainLayout} from "@/components/common/MainLayout";
 import {Button} from "@heroui/button";
 import {Input, Select, SelectItem} from "@heroui/react";
 import {useCategoryStore} from "@/stores/categoryStore";
@@ -8,6 +7,7 @@ import {CategoryList} from "@/components/categories/CategoryList";
 import {StatsSection} from "@/components/categories/StatsSection";
 import {EditModal} from "@/components/categories/EditModal";
 import {FaPlus} from "react-icons/fa";
+import {DeleteModal} from "@/components/categories/DeleteModal";
 
 export const CategoriesPage = () => {
     const {categories} = useCategoryStore();
@@ -15,27 +15,38 @@ export const CategoriesPage = () => {
     const [editingCategory, setEditingCategory] = useState<Category | null>(null);
     const [searchQuery, setSearchQuery] = useState("");
     const [typeFilter, setTypeFilter] = useState<"all" | "income" | "expense">("all");
+    const [deletingCategory, setDeletingCategory] = useState<Category | null>(null);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-    // Calculate filtered categories for stats
     const filteredCategories = categories.filter(category => {
         const matchesSearch = category.name.toLowerCase().includes(searchQuery.toLowerCase());
         const matchesType = typeFilter === "all" || category.budget_type === typeFilter;
         return matchesSearch && matchesType;
     });
 
-    const handleOpenModal = () => {
+    const handleOpenCreateModal = () => {
         setEditingCategory(null);
         setIsModalOpen(true);
     };
 
-    const handleEditCategory = (category: Category) => {
+    const handleOpenEditModal = (category: Category) => {
         setEditingCategory(category);
         setIsModalOpen(true);
     };
 
-    const handleCloseModal = () => {
+    const handleCloseEditModal = () => {
         setIsModalOpen(false);
         setEditingCategory(null);
+    };
+
+    const handleOpenDeleteModal = (category: Category) => {
+        setDeletingCategory(category);
+        setIsDeleteModalOpen(true);
+    };
+
+    const handleCloseDeleteModal = () => {
+        setIsDeleteModalOpen(false);
+        setDeletingCategory(null);
     };
 
     return (
@@ -43,7 +54,7 @@ export const CategoriesPage = () => {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <h2 className="my-2 text-2xl font-bold lg:my-0 lg:text-3xl">分類管理</h2>
-                <Button color="primary" onPress={handleOpenModal}>
+                <Button color="primary" onPress={handleOpenCreateModal}>
                     <FaPlus />
                     新增分類
                 </Button>
@@ -67,11 +78,13 @@ export const CategoriesPage = () => {
                 </Select>
             </div>
 
-            <CategoryList searchQuery={searchQuery} typeFilter={typeFilter} onEditCategory={handleEditCategory} />
+            <CategoryList searchQuery={searchQuery} typeFilter={typeFilter} onEditCategory={handleOpenEditModal} onDeleteCategory={handleOpenDeleteModal} />
 
             <StatsSection categories={categories} filteredCategories={filteredCategories} />
 
-            <EditModal isOpen={isModalOpen} onClose={handleCloseModal} category={editingCategory} />
+            <EditModal isOpen={isModalOpen} onClose={handleCloseEditModal} category={editingCategory} />
+
+            {deletingCategory && <DeleteModal isOpen={isDeleteModalOpen} onClose={handleCloseDeleteModal} category={deletingCategory} />}
         </div>
     );
 };

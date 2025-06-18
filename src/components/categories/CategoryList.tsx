@@ -8,9 +8,10 @@ interface CategoryListProps {
     searchQuery: string;
     typeFilter: "all" | "income" | "expense";
     onEditCategory: (category: Category) => void;
+    onDeleteCategory: (category: Category) => void;
 }
 
-export const CategoryList: React.FC<CategoryListProps> = ({searchQuery, typeFilter, onEditCategory}) => {
+export const CategoryList: React.FC<CategoryListProps> = ({searchQuery, typeFilter, onEditCategory, onDeleteCategory}) => {
     const {categories, isLoading, error, fetchCategories} = useCategoryStore();
 
     useEffect(() => {
@@ -62,7 +63,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({searchQuery, typeFilt
     return (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {filteredCategories.map(category => (
-                <CategoryCard key={category.id} category={category} onEdit={onEditCategory} />
+                <CategoryCard key={category.id} category={category} onEdit={onEditCategory} onDelete={onDeleteCategory} />
             ))}
         </div>
     );
