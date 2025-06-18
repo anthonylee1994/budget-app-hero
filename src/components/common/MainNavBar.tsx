@@ -18,7 +18,7 @@ export const MainNavBar = () => {
     const navigate = useNavigate();
 
     return (
-        <Navbar isBordered onMenuOpenChange={setIsMenuOpen} maxWidth="full">
+        <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} maxWidth="full">
             <NavbarContent>
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="md:hidden" />
                 <NavbarBrand>
@@ -63,6 +63,7 @@ export const MainNavBar = () => {
                             size="lg"
                             color={pathname === item.href ? "primary" : "foreground"}
                             to={item.href}
+                            onPress={() => setIsMenuOpen(false)}
                         >
                             {item.icon && <item.icon className="mr-2" />}
                             {item.label}
@@ -77,7 +78,14 @@ export const MainNavBar = () => {
                 </NavbarMenuItem>
 
                 <NavbarMenuItem className="w-full">
-                    <Link as={RouterLink} to="/settings" color="foreground" className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200" size="lg">
+                    <Link
+                        onPress={() => setIsMenuOpen(false)}
+                        as={RouterLink}
+                        to="/settings"
+                        color="foreground"
+                        className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200"
+                        size="lg"
+                    >
                         <FaCog className="mr-2" />
                         個人設定
                     </Link>

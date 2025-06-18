@@ -4,7 +4,7 @@ import {apiClient} from "../utils/apiClient";
 import type {User} from "../types/User";
 interface UpdateProfileData {
     name?: string;
-    avatar_url?: string;
+    avatar_url: string | null;
 }
 
 interface AuthState {

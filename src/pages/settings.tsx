@@ -57,7 +57,7 @@ export const SettingsPage = () => {
         try {
             await updateProfile({
                 name: data.name.trim(),
-                avatar_url: data.avatar_url || undefined,
+                avatar_url: data.avatar_url || null,
             });
 
             addToast({
