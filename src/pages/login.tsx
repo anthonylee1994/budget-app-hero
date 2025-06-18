@@ -6,6 +6,11 @@ import {useForm} from "react-hook-form";
 import {FaEyeSlash, FaEye, FaLock, FaUser} from "react-icons/fa";
 import {Link, useNavigate} from "react-router-dom";
 
+interface LoginFormData {
+    username: string;
+    password: string;
+}
+
 export const LoginPage = () => {
     const navigate = useNavigate();
     const login = useAuthStore(state => state.login);

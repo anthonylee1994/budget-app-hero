@@ -61,7 +61,7 @@ export const CategoriesPage = () => {
             </div>
 
             {/* Filters */}
-            <div className="flex flex-col items-center gap-2 sm:flex-row">
+            <div className="flex flex-col items-center gap-4 sm:flex-row">
                 <Input fullWidth size="lg" placeholder="搜尋分類名稱..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
                 <Select
                     size="lg"

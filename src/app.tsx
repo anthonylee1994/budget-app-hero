@@ -6,6 +6,11 @@ import {ProtectedRoute} from "./components/auth/ProtectedRoute";
 import {DashboardPage} from "./pages/dashboard";
 import {CategoriesPage} from "./pages/categories";
 import {MainLayout} from "./components/common/MainLayout";
+import {TransactionsPage} from "./pages/transactions";
+import moment from "moment";
+import "moment/dist/locale/zh-hk";
+
+moment.locale("zh-hk");
 
 export const App = () => {
     return (
@@ -27,6 +32,15 @@ export const App = () => {
                     element={
                         <ProtectedRoute>
                             <CategoriesPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/transactions"
+                    element={
+                        <ProtectedRoute>
+                            <TransactionsPage />
                         </ProtectedRoute>
                     }
                 />

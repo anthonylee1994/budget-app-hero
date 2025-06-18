@@ -1,9 +1,40 @@
 import {create} from "zustand";
 import {persist} from "zustand/middleware";
 import {apiClient} from "../utils/apiClient";
-import {SummaryData} from "@/types/SummaryData";
-import {SummaryQueryParams} from "@/types/SummaryQueryParams";
-import {Period} from "@/types/Period";
+
+interface BarChartItem {
+    date: string; // YYYY-MM-DD for weekly/monthly, YYYY-MM for yearly
+    income: number;
+    expense: number;
+    net: number;
+}
+
+interface DonutChart {
+    income: DonutChartItem[];
+    expense: DonutChartItem[];
+}
+
+interface DonutChartItem {
+    name: string;
+    amount: number;
+    color: string;
+    percentage: number;
+}
+
+type Period = "weekly" | "monthly" | "yearly";
+
+interface SummaryData {
+    total_income: number;
+    total_expenses: number;
+    net_balance: number;
+    donut_chart: DonutChart;
+    bar_chart: BarChartItem[];
+    period: Period;
+}
+
+interface SummaryQueryParams {
+    period: Period;
+}
 
 interface SummaryState {
     summaryData: SummaryData | null;
@@ -37,7 +68,6 @@ export const useSummaryStore = create<SummaryState>()(
                     const {selectedPeriod} = get();
                     const queryParams = new URLSearchParams({
                         period: params?.period || selectedPeriod,
-                        ...(params?.date && {date: params.date}),
                     });
 
                     const response = await apiClient.get(`/summary?${queryParams.toString()}`);

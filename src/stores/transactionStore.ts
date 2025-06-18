@@ -177,11 +177,7 @@ export const useTransactionStore = create<TransactionState>()(
                 set({error: null});
                 try {
                     await apiClient.delete(`/transactions/${id}`);
-
-                    // Remove the transaction from local state
-                    const {transactions} = get();
-                    const filteredTransactions = transactions.filter(transaction => transaction.id !== id);
-                    set({transactions: filteredTransactions});
+                    get().fetchTransactions();
                 } catch (error: any) {
                     console.error("Delete transaction error:", error);
                     set({error: "刪除交易失敗"});

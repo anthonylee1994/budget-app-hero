@@ -1,6 +1,5 @@
 import {AvatarUploader} from "@/components/auth/AvatarUploader";
 import {Header} from "@/components/auth/Header";
-import {RegisterFormData} from "@/types/RegisterFormData";
 import {addToast, Alert, Button, Card, CardBody, Input, Link} from "@heroui/react";
 import {FaEye, FaEyeSlash, FaLock, FaUser} from "react-icons/fa";
 import {useForm, Controller} from "react-hook-form";
@@ -8,6 +7,14 @@ import {useAuthStore} from "@/stores/authStore";
 import {useEffect, useRef, useState} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {useNavigate} from "react-router-dom";
+
+export interface RegisterFormData {
+    username: string;
+    password: string;
+    confirm_password: string;
+    name: string;
+    avatar_url?: string;
+}
 
 export const RegisterPage = () => {
     const [showPassword, setShowPassword] = useState(false);

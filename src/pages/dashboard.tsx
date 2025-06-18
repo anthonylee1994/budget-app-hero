@@ -3,8 +3,6 @@ import {Spinner} from "@heroui/react";
 import {useSummaryStore} from "@/stores/summaryStore";
 import {Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement} from "chart.js";
 import {Tab, Tabs} from "@heroui/react";
-import {MainLayout} from "@/components/common/MainLayout";
-import {Period} from "@/types/Period";
 import {SummaryCards} from "@/components/dashboard/SummaryCards";
 import {IncomeDonutChart} from "@/components/dashboard/IncomeDonutChart";
 import {ExpenseDonutChart} from "@/components/dashboard/ExpenseDonutChart";
@@ -28,7 +26,7 @@ export const DashboardPage = () => {
         <React.Fragment>
             <h2 className="my-2 text-2xl font-bold lg:my-0 lg:text-3xl">統計分析</h2>
 
-            <Tabs className="md:w-1/4" fullWidth selectedKey={selectedPeriod} onSelectionChange={key => handlePeriodChange(key as Period)}>
+            <Tabs className="md:w-1/4" fullWidth selectedKey={selectedPeriod} onSelectionChange={key => handlePeriodChange(key as "weekly" | "monthly" | "yearly")}>
                 <Tab key="weekly" title="本週" />
                 <Tab key="monthly" title="本月" />
                 <Tab key="yearly" title="今年" />

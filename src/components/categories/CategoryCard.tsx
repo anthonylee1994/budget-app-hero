@@ -26,7 +26,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({category, onEdit, onD
                     </Chip>
                 </div>
 
-                <div className="mt-2 flex justify-end gap-2">
+                <div className="mt-2 flex justify-start gap-2">
                     <Button isIconOnly size="sm" color="primary" variant="light" onPress={() => onEdit(category)}>
                         <FaEdit />
                     </Button>
