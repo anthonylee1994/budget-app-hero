@@ -53,8 +53,14 @@ export const MainNavBar = () => {
             </NavbarContent>
             <NavbarMenu className="flex flex-col items-center">
                 {navLinks.map((item, index) => (
-                    <NavbarMenuItem key={`${item}-${index}`} className="w-full rounded-lg px-2 py-3 transition-all hover:bg-gray-200">
-                        <Link as={RouterLink} className="flex w-full items-center justify-center" size="lg" color={pathname === item.href ? "primary" : "foreground"} to={item.href}>
+                    <NavbarMenuItem key={`${item}-${index}`} className="w-full">
+                        <Link
+                            as={RouterLink}
+                            className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200"
+                            size="lg"
+                            color={pathname === item.href ? "primary" : "foreground"}
+                            to={item.href}
+                        >
                             {item.icon && <item.icon className="mr-2" />}
                             {item.label}
                         </Link>
@@ -67,15 +73,15 @@ export const MainNavBar = () => {
                     <span className="ml-2">{user?.name}</span>
                 </NavbarMenuItem>
 
-                <NavbarMenuItem className="w-full rounded-lg px-2 py-3 transition-all hover:bg-gray-200">
-                    <Link as={RouterLink} href="#" onPress={logout} color="foreground" className="flex w-full items-center justify-center" size="lg">
+                <NavbarMenuItem className="w-full">
+                    <Link as={RouterLink} href="#" color="foreground" className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200" size="lg">
                         <FaCog className="mr-2" />
                         個人設定
                     </Link>
                 </NavbarMenuItem>
 
-                <NavbarMenuItem className="w-full rounded-lg px-2 py-3 transition-all hover:bg-gray-200">
-                    <Link as={RouterLink} href="#" onPress={logout} className="flex w-full items-center justify-center" size="lg" color="danger">
+                <NavbarMenuItem className="w-full">
+                    <Link as={RouterLink} href="#" onPress={logout} className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200" size="lg" color="danger">
                         <FaSignOutAlt className="mr-2" />
                         登出
                     </Link>

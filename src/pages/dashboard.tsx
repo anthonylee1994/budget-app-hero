@@ -25,7 +25,7 @@ export const DashboardPage = () => {
     }, [selectedPeriod]);
 
     return (
-        <MainLayout>
+        <React.Fragment>
             <h2 className="my-2 text-2xl font-bold lg:my-0 lg:text-3xl">統計分析</h2>
 
             <Tabs className="md:w-1/4" fullWidth selectedKey={selectedPeriod} onSelectionChange={key => handlePeriodChange(key as Period)}>
@@ -52,6 +52,6 @@ export const DashboardPage = () => {
                     )}
                 </React.Fragment>
             )}
-        </MainLayout>
+        </React.Fragment>
     );
 };

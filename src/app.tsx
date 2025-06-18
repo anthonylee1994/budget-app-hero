@@ -5,31 +5,32 @@ import {LoginPage} from "./pages/login";
 import {ProtectedRoute} from "./components/auth/ProtectedRoute";
 import {DashboardPage} from "./pages/dashboard";
 import {CategoriesPage} from "./pages/categories";
+import {MainLayout} from "./components/common/MainLayout";
 
-function App() {
+export const App = () => {
     return (
-        <Routes>
-            <Route element={<IndexPage />} path="/" />
-            <Route element={<RegisterPage />} path="/register" />
-            <Route element={<LoginPage />} path="/login" />
-            <Route
-                path="/dashboard"
-                element={
-                    <ProtectedRoute>
-                        <DashboardPage />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/categories"
-                element={
-                    <ProtectedRoute>
-                        <CategoriesPage />
-                    </ProtectedRoute>
-                }
-            />
-        </Routes>
+        <MainLayout>
+            <Routes>
+                <Route element={<IndexPage />} path="/" />
+                <Route element={<RegisterPage />} path="/register" />
+                <Route element={<LoginPage />} path="/login" />
+                <Route
+                    path="/dashboard"
+                    element={
+                        <ProtectedRoute>
+                            <DashboardPage />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/categories"
+                    element={
+                        <ProtectedRoute>
+                            <CategoriesPage />
+                        </ProtectedRoute>
+                    }
+                />
+            </Routes>
+        </MainLayout>
     );
-}
-
-export default App;
+};
