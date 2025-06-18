@@ -54,7 +54,7 @@ export const MainNavBar = () => {
                     </DropdownMenu>
                 </Dropdown>
             </NavbarContent>
-            <NavbarMenu className="mt-[env(safe-area-inset-bottom)] flex flex-col items-center">
+            <NavbarMenu className="mt-[env(safe-area-inset-top)] flex flex-col items-center">
                 {navLinks.map((item, index) => (
                     <NavbarMenuItem key={`${item}-${index}`} className="w-full">
                         <Link
