@@ -9,6 +9,7 @@ import {MainLayout} from "./components/common/MainLayout";
 import {TransactionsPage} from "./pages/transactions";
 import moment from "moment";
 import "moment/dist/locale/zh-hk";
+import {SettingsPage} from "./pages/settings";
 
 moment.locale("zh-hk");
 
@@ -41,6 +42,14 @@ export const App = () => {
                     element={
                         <ProtectedRoute>
                             <TransactionsPage />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/settings"
+                    element={
+                        <ProtectedRoute>
+                            <SettingsPage />
                         </ProtectedRoute>
                     }
                 />

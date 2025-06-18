@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Navbar, NavbarMenuToggle, NavbarContent, NavbarBrand, NavbarItem, NavbarMenu, NavbarMenuItem} from "@heroui/navbar";
 import {FaChartBar, FaCog, FaList, FaSignOutAlt, FaWallet} from "react-icons/fa";
-import {Link as RouterLink, useLocation} from "react-router-dom";
+import {Link as RouterLink, useLocation, useNavigate} from "react-router-dom";
 import {Avatar, Divider, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link} from "@heroui/react";
 import {useAuthStore} from "@/stores/authStore";
 
@@ -15,6 +15,7 @@ export const MainNavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const {pathname} = useLocation();
     const {user, logout} = useAuthStore();
+    const navigate = useNavigate();
 
     return (
         <Navbar isBordered onMenuOpenChange={setIsMenuOpen} maxWidth="full">
@@ -44,7 +45,9 @@ export const MainNavBar = () => {
                         </NavbarItem>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Static Actions">
-                        <DropdownItem key="settings">個人設定</DropdownItem>
+                        <DropdownItem key="settings" onPress={() => navigate("/settings")}>
+                            個人設定
+                        </DropdownItem>
                         <DropdownItem key="logout" className="text-danger" color="danger" onPress={logout}>
                             登出
                         </DropdownItem>
@@ -74,7 +77,7 @@ export const MainNavBar = () => {
                 </NavbarMenuItem>
 
                 <NavbarMenuItem className="w-full">
-                    <Link as={RouterLink} href="#" color="foreground" className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200" size="lg">
+                    <Link as={RouterLink} to="/settings" color="foreground" className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200" size="lg">
                         <FaCog className="mr-2" />
                         個人設定
                     </Link>
