@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useForm, Controller} from "react-hook-form";
-import {Card, CardBody, CardHeader, Button, Input, Divider, addToast} from "@heroui/react";
+import {Card, CardBody, CardHeader, Button, Input, addToast} from "@heroui/react";
 import {MainLayout} from "@/components/common/MainLayout";
 import {AvatarUploader} from "@/components/auth/AvatarUploader";
 import {useAuthStore} from "@/stores/authStore";

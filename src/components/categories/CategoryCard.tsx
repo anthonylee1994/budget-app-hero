@@ -1,6 +1,5 @@
 import React from "react";
 import {Card, CardBody, Button, Chip} from "@heroui/react";
-import {useCategoryStore} from "@/stores/categoryStore";
 import type {Category} from "@/types/Category";
 import {FaEdit, FaTrash} from "react-icons/fa";
 

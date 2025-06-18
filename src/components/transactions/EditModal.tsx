@@ -4,8 +4,7 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input,
 import {useTransactionStore} from "@/stores/transactionStore";
 import {useCategoryStore} from "@/stores/categoryStore";
 import type {Transaction} from "@/types/Transaction";
-import moment from "moment";
-import {parseZonedDateTime, parseAbsoluteToLocal, now, getLocalTimeZone, ZonedDateTime} from "@internationalized/date";
+import {parseAbsoluteToLocal, now, getLocalTimeZone, ZonedDateTime} from "@internationalized/date";
 
 interface EditModalProps {
     isOpen: boolean;
