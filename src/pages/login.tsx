@@ -1,9 +1,9 @@
 import {Header} from "@/components/auth/Header";
 import {useAuthStore} from "@/stores/authStore";
 import {addToast, Alert, Button, Card, CardBody, Input} from "@heroui/react";
+import {Icon} from "@iconify/react";
 import {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
-import {FaEyeSlash, FaEye, FaLock, FaUser} from "react-icons/fa";
 import {Link, useNavigate} from "react-router-dom";
 
 interface LoginFormData {
@@ -84,7 +84,7 @@ export const LoginPage = () => {
                             validationBehavior="aria"
                             isInvalid={!!errors.username}
                             errorMessage={errors.username?.message}
-                            startContent={<FaUser />}
+                            startContent={<Icon icon="mdi:user" />}
                             label="使用者名稱"
                             placeholder="請輸入使用者名稱"
                             labelPlacement="outside"
@@ -95,7 +95,7 @@ export const LoginPage = () => {
                             {...registerField("password", {
                                 required: "密碼為必填項目",
                             })}
-                            startContent={<FaLock />}
+                            startContent={<Icon icon="mdi:lock" />}
                             label="密碼"
                             type={showPassword ? "text" : "password"}
                             placeholder="請輸入密碼"
@@ -105,7 +105,7 @@ export const LoginPage = () => {
                             errorMessage={errors.password?.message}
                             endContent={
                                 <Button className="-mr-3" isIconOnly variant="light" onPress={() => setShowPassword(!showPassword)}>
-                                    {showPassword ? <FaEye /> : <FaEyeSlash />}
+                                    {showPassword ? <Icon icon="mdi:eye" /> : <Icon icon="mdi:eye-off" />}
                                 </Button>
                             }
                             disabled={isSubmitting}

@@ -1,7 +1,7 @@
 import React from "react";
 import {Card, CardBody, Chip, Dropdown, DropdownTrigger, DropdownItem, DropdownMenu} from "@heroui/react";
 import type {Category} from "@/types/Category";
-import {FaEdit, FaTrash} from "react-icons/fa";
+import {Icon} from "@iconify/react";
 import moment from "moment";
 
 interface CategoryCardProps {
@@ -46,13 +46,13 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({category, onEdit, onD
             <DropdownMenu>
                 <DropdownItem key="edit" onPress={() => onEdit(category)}>
                     <div className="flex items-center gap-2">
-                        <FaEdit size={12} />
+                        <Icon icon="mdi:pencil" className="text-lg" />
                         編輯
                     </div>
                 </DropdownItem>
                 <DropdownItem key="delete" onPress={() => onDelete(category)}>
                     <div className="flex items-center gap-2 text-red-500">
-                        <FaTrash size={12} />
+                        <Icon icon="mdi:trash-can" className="text-lg" />
                         刪除
                     </div>
                 </DropdownItem>

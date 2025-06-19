@@ -2,7 +2,7 @@ import React from "react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Card, CardBody, Chip, addToast} from "@heroui/react";
 import {useCategoryStore} from "@/stores/categoryStore";
 import type {Category} from "@/types/Category";
-import {FaExclamationTriangle} from "react-icons/fa";
+import {Icon} from "@iconify/react";
 
 interface Props {
     isOpen: boolean;
@@ -47,7 +47,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, category}) => {
             <ModalContent>
                 <ModalHeader className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
-                        <FaExclamationTriangle className="text-red-500" />
+                        <Icon icon="mdi:alert-circle" className="text-red-500" />
                         刪除分類
                     </div>
                 </ModalHeader>
@@ -58,7 +58,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, category}) => {
                         <Card className="border border-red-200 bg-red-50">
                             <CardBody className="p-4">
                                 <div className="flex items-start gap-3">
-                                    <FaExclamationTriangle className="mt-0.5 flex-shrink-0 text-red-500" />
+                                    <Icon icon="mdi:alert-circle" className="mt-0.5 flex-shrink-0 text-red-500" />
                                     <div>
                                         <h4 className="mb-1 font-semibold text-red-800">警告！</h4>
                                         <p className="text-sm text-red-700">此操作無法復原。刪除分類後，所有相關的交易紀錄可能會受到影響。</p>

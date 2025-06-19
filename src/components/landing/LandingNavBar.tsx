@@ -1,13 +1,13 @@
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem} from "@heroui/navbar";
 import {Button} from "@heroui/button";
-import {FaWallet} from "react-icons/fa";
 import {Link} from "react-router-dom";
+import {Icon} from "@iconify/react";
 
 export const LandingNavBar = () => {
     return (
         <Navbar isBordered className="pt-[env(safe-area-inset-top)]">
             <NavbarBrand>
-                <FaWallet className="mr-2 text-2xl text-blue-500" />
+                <Icon icon="fa-solid:wallet" className="mr-2 text-2xl text-blue-500" />
                 <span className="text-2xl font-light text-blue-500">智慧理財</span>
             </NavbarBrand>
             <NavbarContent justify="end" className="gap-2">

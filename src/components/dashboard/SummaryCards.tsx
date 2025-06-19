@@ -1,7 +1,7 @@
 import {Card} from "@heroui/react";
 import {CardBody} from "@heroui/react";
-import {FaArrowDown, FaArrowUp, FaWallet} from "react-icons/fa";
 import {useSummaryStore} from "@/stores/summaryStore";
+import {Icon} from "@iconify/react";
 
 export const SummaryCards = () => {
     const {summaryData} = useSummaryStore();
@@ -13,7 +13,7 @@ export const SummaryCards = () => {
             <Card>
                 <CardBody className="flex flex-row items-center justify-between gap-4">
                     <div className="rounded-full bg-green-100 p-3">
-                        <FaArrowUp className="text-xl text-green-600" />
+                        <Icon icon="mdi:arrow-up" className="text-xl text-green-600" />
                     </div>
                     <div className="text-end">
                         <p className="text-sm text-gray-600">總收入</p>
@@ -24,7 +24,7 @@ export const SummaryCards = () => {
             <Card>
                 <CardBody className="flex flex-row items-center justify-between gap-4">
                     <div className="rounded-full bg-red-100 p-3">
-                        <FaArrowDown className="text-xl text-red-600" />
+                        <Icon icon="mdi:arrow-down" className="text-xl text-red-600" />
                     </div>
                     <div className="text-end">
                         <p className="text-sm text-gray-600">總支出</p>
@@ -35,7 +35,7 @@ export const SummaryCards = () => {
             <Card>
                 <CardBody className="flex flex-row items-center justify-between gap-4">
                     <div className="rounded-full bg-blue-100 p-3">
-                        <FaWallet className="text-xl text-blue-600" />
+                        <Icon icon="fa-solid:wallet" className="text-xl text-blue-600" />
                     </div>
                     <div className="text-end">
                         <p className="text-sm text-gray-600">淨收益</p>

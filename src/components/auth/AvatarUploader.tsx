@@ -1,8 +1,8 @@
 import React, {useState, useRef} from "react";
-import {FaTrash, FaPlus} from "react-icons/fa";
 import {addToast, Button} from "@heroui/react";
 import {apiClient} from "@/utils/apiClient";
 import {Avatar} from "@heroui/react";
+import {Icon} from "@iconify/react/dist/iconify.js";
 
 interface Props {
     value?: string;
@@ -96,7 +96,7 @@ export const AvatarUploader: React.FC<Props> = ({value, onChange}) => {
                 size="sm"
                 onPress={value ? handleRemoveAvatar : openFileDialog}
             >
-                {value ? <FaTrash /> : <FaPlus />}
+                {value ? <Icon icon="mdi:trash-can" className="text-lg" /> : <Icon icon="mdi:plus" className="text-lg" />}
             </Button>
             <input type="file" accept="image/png, image/jpeg" ref={fileInputRef} onChange={handleFileInputChange} className="hidden" />
         </div>

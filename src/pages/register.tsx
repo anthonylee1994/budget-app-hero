@@ -1,7 +1,7 @@
 import {AvatarUploader} from "@/components/auth/AvatarUploader";
 import {Header} from "@/components/auth/Header";
+import {Icon} from "@iconify/react";
 import {addToast, Alert, Button, Card, CardBody, Input, Link} from "@heroui/react";
-import {FaEye, FaEyeSlash, FaLock, FaUser} from "react-icons/fa";
 import {useForm, Controller} from "react-hook-form";
 import {useAuthStore} from "@/stores/authStore";
 import {useEffect, useRef, useState} from "react";
@@ -133,7 +133,7 @@ export const RegisterPage = () => {
                             validationBehavior="aria"
                             isInvalid={!!errors.username}
                             errorMessage={errors.username?.message}
-                            startContent={<FaUser />}
+                            startContent={<Icon icon="mdi:user" />}
                             label="使用者名稱"
                             placeholder="請輸入使用者名稱"
                             labelPlacement="outside"
@@ -152,7 +152,7 @@ export const RegisterPage = () => {
                                     message: "姓名不能超過 50 個字元",
                                 },
                             })}
-                            startContent={<FaUser />}
+                            startContent={<Icon icon="mdi:user" />}
                             label="姓名"
                             placeholder="請輸入姓名"
                             labelPlacement="outside"
@@ -169,7 +169,7 @@ export const RegisterPage = () => {
                                     message: "密碼至少需要 6 個字元",
                                 },
                             })}
-                            startContent={<FaLock />}
+                            startContent={<Icon icon="mdi:lock" />}
                             label="密碼"
                             type={showPassword ? "text" : "password"}
                             placeholder="請輸入密碼"
@@ -179,7 +179,7 @@ export const RegisterPage = () => {
                             errorMessage={errors.password?.message}
                             endContent={
                                 <Button className="-mr-3" isIconOnly variant="light" onPress={() => setShowPassword(!showPassword)}>
-                                    {showPassword ? <FaEye /> : <FaEyeSlash />}
+                                    {showPassword ? <Icon icon="mdi:eye" /> : <Icon icon="mdi:eye-off" />}
                                 </Button>
                             }
                             disabled={isSubmitting}
@@ -194,7 +194,7 @@ export const RegisterPage = () => {
                                     return true;
                                 },
                             })}
-                            startContent={<FaLock />}
+                            startContent={<Icon icon="mdi:lock" />}
                             label="確認密碼"
                             type="password"
                             placeholder="請輸入確認密碼"
@@ -204,7 +204,7 @@ export const RegisterPage = () => {
                             errorMessage={errors.confirm_password?.message}
                             endContent={
                                 <Button className="-mr-3" isIconOnly variant="light" onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-                                    {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+                                    {showConfirmPassword ? <Icon icon="mdi:eye" /> : <Icon icon="mdi:eye-off" />}
                                 </Button>
                             }
                             disabled={isSubmitting}

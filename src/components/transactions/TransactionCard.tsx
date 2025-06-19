@@ -1,8 +1,8 @@
 import React from "react";
 import {Card, CardBody, Chip, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, CardFooter} from "@heroui/react";
-import {FaEdit, FaTrash} from "react-icons/fa";
 import type {Transaction} from "@/types/Transaction";
 import moment from "moment";
+import {Icon} from "@iconify/react/dist/iconify.js";
 
 interface TransactionCardProps {
     transaction: Transaction;
@@ -67,13 +67,13 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({transaction, on
             <DropdownMenu>
                 <DropdownItem key="edit" onPress={() => onEdit(transaction)}>
                     <div className="flex items-center gap-2">
-                        <FaEdit size={12} />
+                        <Icon icon="mdi:pencil" className="text-lg" />
                         編輯
                     </div>
                 </DropdownItem>
                 <DropdownItem key="delete" onPress={() => onDelete(transaction)}>
                     <div className="flex items-center gap-2 text-danger">
-                        <FaTrash size={12} />
+                        <Icon icon="mdi:trash-can" className="text-lg" />
                         刪除
                     </div>
                 </DropdownItem>

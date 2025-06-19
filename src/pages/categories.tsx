@@ -6,8 +6,8 @@ import type {Category} from "@/types/Category";
 import {CategoryList} from "@/components/categories/CategoryList";
 import {StatsSection} from "@/components/categories/StatsSection";
 import {EditModal} from "@/components/categories/EditModal";
-import {FaPlus} from "react-icons/fa";
 import {DeleteModal} from "@/components/categories/DeleteModal";
+import {Icon} from "@iconify/react";
 
 export const CategoriesPage = () => {
     const {categories} = useCategoryStore();
@@ -54,7 +54,7 @@ export const CategoriesPage = () => {
             <div className="flex items-center justify-between">
                 <h2 className="my-2 text-2xl font-bold lg:my-0 lg:text-3xl">分類管理</h2>
                 <Button color="primary" onPress={handleOpenCreateModal}>
-                    <FaPlus />
+                    <Icon icon="mdi:plus" className="text-lg" />
                     新增分類
                 </Button>
             </div>

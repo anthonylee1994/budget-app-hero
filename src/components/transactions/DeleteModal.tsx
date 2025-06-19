@@ -2,8 +2,8 @@ import React from "react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Card, CardBody, Chip, addToast} from "@heroui/react";
 import {useTransactionStore} from "@/stores/transactionStore";
 import type {Transaction} from "@/types/Transaction";
-import {FaExclamationTriangle} from "react-icons/fa";
 import moment from "moment";
+import {Icon} from "@iconify/react";
 
 interface Props {
     isOpen: boolean;
@@ -51,7 +51,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, transaction}) => 
             <ModalContent>
                 <ModalHeader className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
-                        <FaExclamationTriangle className="text-red-500" />
+                        <Icon icon="mdi:alert-circle" className="text-red-500" />
                         刪除交易記錄
                     </div>
                 </ModalHeader>
@@ -62,7 +62,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, transaction}) => 
                         <Card className="border border-red-200 bg-red-50">
                             <CardBody className="p-4">
                                 <div className="flex items-start gap-3">
-                                    <FaExclamationTriangle className="mt-0.5 flex-shrink-0 text-red-500" />
+                                    <Icon icon="mdi:alert-circle" className="mt-0.5 flex-shrink-0 text-red-500" />
                                     <div>
                                         <h4 className="mb-1 font-semibold text-red-800">警告！</h4>
                                         <p className="text-sm text-red-700">此操作無法復原。刪除後將無法恢復此交易記錄。</p>
@@ -75,7 +75,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, transaction}) => 
                         <Card>
                             <CardBody className="p-4">
                                 <div className="flex items-center gap-3">
-                                    <div className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white" style={{backgroundColor: transaction.category.color}}>
+                                    <div className="flex h-8 w-8 items-center justify-center rounded-full text-sm text-white" style={{backgroundColor: transaction.category.color}}>
                                         {transaction.category.name.charAt(0).toUpperCase()}
                                     </div>
                                     <div className="flex-1">

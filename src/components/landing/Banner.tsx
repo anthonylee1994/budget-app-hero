@@ -1,6 +1,6 @@
 import {Button} from "@heroui/button";
 import {Chip} from "@heroui/chip";
-import {FaChartLine} from "react-icons/fa";
+import {Icon} from "@iconify/react";
 import {Link} from "react-router-dom";
 
 export const Banner = () => {
@@ -27,7 +27,7 @@ export const Banner = () => {
                 </div>
                 <div className="p-10">
                     <div className="flex h-[300px] w-[300px] items-center justify-center rounded-full border-2 border-blue-500 bg-white shadow-lg">
-                        <FaChartLine className="text-[100px] text-blue-500" />
+                        <Icon icon="fa6-solid:money-bill-trend-up" className="text-[100px] text-blue-500" />
                     </div>
                 </div>
             </div>
