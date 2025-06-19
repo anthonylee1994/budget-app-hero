@@ -114,7 +114,7 @@ export const FilterSection: React.FC = () => {
             </div>
 
             {/* Period Buttons */}
-            <div className="flex justify-center gap-2">
+            <div className="flex gap-2">
                 <Tabs
                     className="md:w-1/4"
                     fullWidth
