@@ -1,5 +1,5 @@
 import React from "react";
-import {Card, CardBody, Chip, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@heroui/react";
+import {Card, CardBody, Chip, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, Divider, CardFooter} from "@heroui/react";
 import {FaEdit, FaTrash} from "react-icons/fa";
 import type {Transaction} from "@/types/Transaction";
 import moment from "moment";
@@ -22,34 +22,46 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({transaction, on
         <Dropdown>
             <DropdownTrigger>
                 <Card isPressable className="transition-all duration-300">
-                    <CardBody className="p-4">
+                    <CardBody className="gap-4 p-4 md:px-6">
                         <div className="flex items-center justify-between">
-                            <div className="flex flex-1 items-center gap-3">
-                                {/* Category Icon */}
-                                <div className="flex h-12 w-12 items-center justify-center rounded-full text-xl text-white" style={{backgroundColor: transaction.category.color}}>
-                                    {getCategoryIcon(transaction.category.name)}
-                                </div>
-
-                                {/* Transaction Info */}
-                                <div className="min-w-0 flex-1">
-                                    <h3 className="truncate text-lg font-semibold">{transaction.description || transaction.category.name}</h3>
-                                    <p className="text-sm text-gray-500">
-                                        {moment(transaction.date).format("YYYY-MM-DD HH:mm")} ({moment(transaction.date).fromNow()})
-                                    </p>
+                            <div className="flex items-center gap-4">
+                                <Avatar
+                                    name={getCategoryIcon(transaction.category.name)}
+                                    size="lg"
+                                    className="h-12 min-h-12 w-12 min-w-12 text-2xl text-white"
+                                    style={{backgroundColor: transaction.category.color}}
+                                />
+                                <div className="flex flex-col gap-1">
+                                    <h3 className="text-lg font-bold leading-5 text-foreground">{transaction.description || transaction.category.name}</h3>
+                                    <div className="flex items-center gap-2 text-sm text-default-400">{transaction.category.name}</div>
                                 </div>
                             </div>
 
-                            <Chip className="absolute right-4 top-4" color={transaction.category.budget_type === "income" ? "success" : "danger"} variant="flat" size="sm">
-                                {transaction.category.name}
-                            </Chip>
-                        </div>
-
-                        <div className="flex items-center justify-end">
-                            <div className={`text-xl font-bold ${transaction.category.budget_type === "expense" ? "text-red-500" : "text-green-500"}`}>
-                                {isIncome ? "+" : "-"}${amount.toLocaleString()}
+                            <div className="text-right">
+                                <div className={`text-2xl font-bold ${isIncome ? "text-success" : "text-danger"}`}>
+                                    {isIncome ? "+" : "-"}${amount.toLocaleString()}
+                                </div>
+                                <span className="text-small text-default-400">{moment(transaction.date).fromNow()}</span>
                             </div>
                         </div>
                     </CardBody>
+                    <CardFooter className="flex justify-between border-t-1 border-t-default-200 p-4 md:px-6">
+                        <div className="flex w-full justify-between gap-4">
+                            <div className="flex flex-col gap-1 text-left">
+                                <span className="text-small font-medium text-default-600">交易時間</span>
+                                <div className="flex items-center gap-2">
+                                    <span className="font-mono text-small text-default-700">{moment(transaction.date).format("YYYY-MM-DD HH:mm")}</span>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col items-end gap-1">
+                                <span className="text-small font-medium text-default-600">交易類型</span>
+                                <Chip color={isIncome ? "success" : "danger"} variant="flat" size="sm" className="w-fit">
+                                    {isIncome ? "收入" : "支出"}
+                                </Chip>
+                            </div>
+                        </div>
+                    </CardFooter>
                 </Card>
             </DropdownTrigger>
             <DropdownMenu>
@@ -60,7 +72,7 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({transaction, on
                     </div>
                 </DropdownItem>
                 <DropdownItem key="delete" onPress={() => onDelete(transaction)}>
-                    <div className="flex items-center gap-2 text-red-500">
+                    <div className="flex items-center gap-2 text-danger">
                         <FaTrash size={12} />
                         刪除
                     </div>

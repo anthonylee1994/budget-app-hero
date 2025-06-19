@@ -37,7 +37,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({category, onEdit, onD
                             </div>
                             <div className="flex items-center justify-between">
                                 <span className="font-medium">建立時間</span>
-                                <span>{moment(category.created_at).format("YYYY-MM-DD")}</span>
+                                <span className="font-mono">{moment(category.created_at).format("YYYY-MM-DD")}</span>
                             </div>
                         </div>
                     </CardBody>
