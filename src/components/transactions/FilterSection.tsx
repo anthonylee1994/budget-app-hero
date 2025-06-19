@@ -35,7 +35,7 @@ export const FilterSection: React.FC = () => {
     const handleCategoryChange = (keys: any) => {
         const selectedKey = Array.from(keys)[0] as string;
         setFilters({
-            category_id: selectedKey === "all" ? undefined : parseInt(selectedKey),
+            category_id: selectedKey === "all" || selectedKey === undefined ? undefined : parseInt(selectedKey),
             page: 1,
         });
     };
