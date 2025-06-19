@@ -66,7 +66,7 @@ export const CategoriesPage = () => {
                     selectedKeys={[typeFilter]}
                     onSelectionChange={keys => {
                         const selectedKey = Array.from(keys)[0] as "all" | "income" | "expense";
-                        setTypeFilter(selectedKey);
+                        setTypeFilter(selectedKey || "all");
                     }}
                 >
                     <SelectItem key="all">全部類型</SelectItem>
