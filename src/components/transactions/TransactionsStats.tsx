@@ -3,9 +3,9 @@ import {Card, CardBody} from "@heroui/react";
 import {useTransactionStore} from "@/stores/transactionStore";
 
 export const TransactionsStats: React.FC = () => {
-    const {summary, pagination} = useTransactionStore();
+    const {summary, pagination, isLoading} = useTransactionStore();
 
-    if (!summary) {
+    if (!summary || isLoading) {
         return null;
     }
 
