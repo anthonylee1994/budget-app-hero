@@ -13,7 +13,7 @@ export const SummaryCards = () => {
             <Card>
                 <CardBody className="flex flex-row items-center justify-between gap-4">
                     <div className="rounded-full bg-green-100 p-3">
-                        <Icon icon="mdi:arrow-up" className="text-xl text-green-600" />
+                        <Icon icon="icon-park-outline:income" className="text-xl text-green-600" />
                     </div>
                     <div className="text-end">
                         <p className="text-sm text-gray-600">總收入</p>
@@ -24,7 +24,7 @@ export const SummaryCards = () => {
             <Card>
                 <CardBody className="flex flex-row items-center justify-between gap-4">
                     <div className="rounded-full bg-red-100 p-3">
-                        <Icon icon="mdi:arrow-down" className="text-xl text-red-600" />
+                        <Icon icon="icon-park-outline:expenses" className="text-xl text-red-600" />
                     </div>
                     <div className="text-end">
                         <p className="text-sm text-gray-600">總支出</p>
