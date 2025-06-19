@@ -1,5 +1,5 @@
 import React from "react";
-import {Card, CardBody, Chip, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, Divider, CardFooter} from "@heroui/react";
+import {Card, CardBody, Chip, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, CardFooter} from "@heroui/react";
 import {FaEdit, FaTrash} from "react-icons/fa";
 import type {Transaction} from "@/types/Transaction";
 import moment from "moment";
