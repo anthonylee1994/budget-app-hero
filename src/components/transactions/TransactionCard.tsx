@@ -26,7 +26,7 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({transaction, on
                         <div className="flex items-center justify-between">
                             <div className="flex flex-1 items-center gap-3">
                                 {/* Category Icon */}
-                                <div className="flex h-12 w-12 items-center justify-center rounded-full font-bold text-white" style={{backgroundColor: transaction.category.color}}>
+                                <div className="flex h-12 w-12 items-center justify-center rounded-full text-xl text-white" style={{backgroundColor: transaction.category.color}}>
                                     {getCategoryIcon(transaction.category.name)}
                                 </div>
 
