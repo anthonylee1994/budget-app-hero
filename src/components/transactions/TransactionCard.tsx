@@ -14,10 +14,6 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({transaction, on
     const isIncome = transaction.category.budget_type === "income";
     const amount = transaction.amount;
 
-    const getCategoryIcon = (categoryName: string) => {
-        return categoryName.charAt(0).toUpperCase();
-    };
-
     return (
         <Dropdown>
             <DropdownTrigger>
@@ -25,12 +21,9 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({transaction, on
                     <CardBody className="gap-4 p-4 md:px-6">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                                <Avatar
-                                    name={getCategoryIcon(transaction.category.name)}
-                                    size="lg"
-                                    className="h-12 min-h-12 w-12 min-w-12 text-2xl text-white"
-                                    style={{backgroundColor: transaction.category.color}}
-                                />
+                                <div className="flex h-12 w-12 items-center justify-center rounded-full text-2xl text-white" style={{backgroundColor: transaction.category.color}}>
+                                    {transaction.category.icon ? <Icon icon={transaction.category.icon} /> : transaction.category.name.charAt(0).toUpperCase()}
+                                </div>
                                 <div className="flex flex-col gap-1">
                                     <h3 className="text-lg font-bold leading-5 text-foreground">{transaction.description || transaction.category.name}</h3>
                                     <div className="flex items-center gap-2 text-sm text-default-400">{transaction.category.name}</div>

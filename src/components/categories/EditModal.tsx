@@ -4,6 +4,7 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input,
 import {useCategoryStore} from "@/stores/categoryStore";
 import type {Category} from "@/types/Category";
 import {ColorPicker} from "./ColorPicker";
+import {IconPicker} from "./IconPicker";
 
 interface EditModalProps {
     isOpen: boolean;
@@ -15,6 +16,7 @@ interface FormData {
     name: string;
     budget_type: "income" | "expense";
     color: string;
+    icon: string;
 }
 
 export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category}) => {
@@ -30,6 +32,7 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
             name: "",
             budget_type: "expense",
             color: "#ef4444",
+            icon: "",
         },
         mode: "onChange",
     });
@@ -41,12 +44,14 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
                     name: category.name,
                     budget_type: category.budget_type,
                     color: category.color,
+                    icon: category.icon || "",
                 });
             } else {
                 reset({
                     name: "",
                     budget_type: "expense",
                     color: "#F56565",
+                    icon: "",
                 });
             }
         }
@@ -120,6 +125,8 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
                                     </Select>
                                 )}
                             />
+
+                            <Controller name="icon" control={control} render={({field}) => <IconPicker value={field.value} onChange={field.onChange} />} />
 
                             <Controller
                                 name="color"

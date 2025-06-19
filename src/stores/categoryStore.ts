@@ -6,12 +6,14 @@ interface UpdateCategoryData {
     name?: string;
     budget_type?: "income" | "expense";
     color?: string;
+    icon?: string | null;
 }
 
 interface CreateCategoryData {
     name: string;
     budget_type: "income" | "expense";
     color: string;
+    icon: string | null;
 }
 
 interface CategoryState {

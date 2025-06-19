@@ -7,6 +7,7 @@ export interface Transaction {
         name: string;
         budget_type?: "income" | "expense";
         color: string;
+        icon: string | null;
     };
     amount: number;
     date: string; // YYYY-MM-DD format
