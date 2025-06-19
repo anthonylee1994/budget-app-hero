@@ -3,7 +3,7 @@ import {Select, SelectItem, Tabs, Tab, SelectSection} from "@heroui/react";
 import {useCategoryStore} from "@/stores/categoryStore";
 import {useTransactionStore} from "@/stores/transactionStore";
 
-export const FilterSection: React.FC = () => {
+export const FilterSection = () => {
     const {categories, fetchCategories} = useCategoryStore();
     const {filters, setFilters} = useTransactionStore();
 
