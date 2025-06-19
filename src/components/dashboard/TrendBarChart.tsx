@@ -1,5 +1,7 @@
 import {useSummaryStore} from "@/stores/summaryStore";
+import {NumberUtil} from "@/utils/NumberUtil";
 import {Card, CardHeader, CardBody} from "@heroui/react";
+import moment from "moment";
 import {Bar} from "react-chartjs-2";
 
 export const TrendBarChart = () => {
@@ -10,11 +12,9 @@ export const TrendBarChart = () => {
             summaryData?.bar_chart.map(item => {
                 const date = new Date(item.date);
                 if (selectedPeriod === "yearly") {
-                    return date.toLocaleDateString("zh-TW", {year: "numeric", month: "short"});
-                } else if (selectedPeriod === "monthly") {
-                    return date.toLocaleDateString("zh-TW", {month: "short", day: "numeric"});
+                    return moment(date).format("YYYY年M月");
                 } else {
-                    return date.toLocaleDateString("zh-TW", {month: "short", day: "numeric"});
+                    return moment(date).format("M月D日");
                 }
             }) || [],
         datasets: [
@@ -47,7 +47,7 @@ export const TrendBarChart = () => {
                 beginAtZero: true,
                 ticks: {
                     callback: function (value: any) {
-                        return `$${value.toLocaleString()}`;
+                        return NumberUtil.formatCurrency(value);
                     },
                 },
             },

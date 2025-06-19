@@ -4,6 +4,7 @@ import {useTransactionStore} from "@/stores/transactionStore";
 import type {Transaction} from "@/types/Transaction";
 import moment from "moment";
 import {Icon} from "@iconify/react";
+import {NumberUtil} from "@/utils/NumberUtil";
 
 interface Props {
     isOpen: boolean;
@@ -89,7 +90,8 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, transaction}) => 
                                             {transaction.category.name}
                                         </Chip>
                                         <div className={`mt-8 text-xl font-bold ${transaction.category.budget_type === "expense" ? "text-red-500" : "text-green-500"}`}>
-                                            {isIncome ? "+" : "-"}${amount.toLocaleString()}
+                                            {isIncome ? "+" : "-"}
+                                            {NumberUtil.formatCurrency(amount)}
                                         </div>
                                     </div>
                                 </div>

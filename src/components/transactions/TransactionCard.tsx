@@ -3,6 +3,7 @@ import {Card, CardBody, Chip, Dropdown, DropdownTrigger, DropdownMenu, DropdownI
 import type {Transaction} from "@/types/Transaction";
 import moment from "moment";
 import {Icon} from "@iconify/react";
+import {NumberUtil} from "@/utils/NumberUtil";
 
 interface TransactionCardProps {
     transaction: Transaction;
@@ -31,8 +32,9 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({transaction, on
                             </div>
 
                             <div className="text-right">
-                                <div className={`text-2xl font-bold ${isIncome ? "text-success" : "text-danger"}`}>
-                                    {isIncome ? "+" : "-"}${amount.toLocaleString()}
+                                <div className={`text-xl font-bold md:text-2xl ${isIncome ? "text-success" : "text-danger"}`}>
+                                    {isIncome ? "+" : "-"}
+                                    {NumberUtil.formatCurrency(amount)}
                                 </div>
                                 <span className="text-small text-default-400">{moment(transaction.date).fromNow()}</span>
                             </div>

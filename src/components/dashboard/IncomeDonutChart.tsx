@@ -1,6 +1,7 @@
 import {Card, CardBody, CardHeader} from "@heroui/react";
 import {Doughnut} from "react-chartjs-2";
 import {useSummaryStore} from "@/stores/summaryStore";
+import {NumberUtil} from "@/utils/NumberUtil";
 
 export const IncomeDonutChart = () => {
     const {summaryData, selectedPeriod} = useSummaryStore();
@@ -30,7 +31,7 @@ export const IncomeDonutChart = () => {
                             selectedPeriod === "weekly"
                                 ? summaryData?.donut_chart.income[context.dataIndex] || summaryData?.donut_chart.expense[context.dataIndex]
                                 : summaryData?.donut_chart.income[context.dataIndex] || summaryData?.donut_chart.expense[context.dataIndex];
-                        return `${context.label}: $${context.parsed.toLocaleString()} (${item?.percentage.toFixed(1)}%)`;
+                        return `${context.label}: ${NumberUtil.formatCurrency(context.parsed)} (${item?.percentage.toFixed(1)}%)`;
                     },
                 },
             },
