@@ -16,7 +16,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({children}) => {
     return (
         <React.Fragment>
             <MainNavBar />
-            <div className="container mx-auto max-w-6xl space-y-6 p-4 pb-[env(safe-area-inset-bottom)] lg:p-8">{children}</div>
+            <div className="container mx-auto max-w-6xl space-y-6 p-4 pb-[calc(env(safe-area-inset-bottom)+1rem)] lg:p-8">{children}</div>
         </React.Fragment>
     );
 };
