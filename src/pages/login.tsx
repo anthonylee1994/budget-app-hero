@@ -71,10 +71,10 @@ export const LoginPage = () => {
     };
 
     return (
-        <div className="mx-auto mt-[env(safe-area-inset-top)] max-w-md p-4">
+        <div className="mx-auto mt-[env(safe-area-inset-top)] max-w-md p-4 pb-[env(safe-area-inset-bottom)]">
             <Header title="歡迎回來" description="登入您的智慧理財帳戶" />
-            <Card className="py-4 md:p-4">
-                {serverError && <Alert color="danger" title={serverError} />}
+            <Card className="p-4 py-4">
+                {serverError && <Alert color="danger" title={serverError} className="m" />}
                 <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                     <CardBody className="flex flex-col items-center">
                         <Input
