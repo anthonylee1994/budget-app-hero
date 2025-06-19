@@ -2,7 +2,7 @@ import React, {useState, useRef} from "react";
 import {addToast, Button} from "@heroui/react";
 import {apiClient} from "@/utils/apiClient";
 import {Avatar} from "@heroui/react";
-import {Icon} from "@iconify/react/dist/iconify.js";
+import {Icon} from "@iconify/react";
 
 interface Props {
     value?: string;

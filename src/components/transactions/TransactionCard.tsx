@@ -2,7 +2,7 @@ import React from "react";
 import {Card, CardBody, Chip, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, CardFooter} from "@heroui/react";
 import type {Transaction} from "@/types/Transaction";
 import moment from "moment";
-import {Icon} from "@iconify/react/dist/iconify.js";
+import {Icon} from "@iconify/react";
 
 interface TransactionCardProps {
     transaction: Transaction;
