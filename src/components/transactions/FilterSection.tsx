@@ -115,7 +115,12 @@ export const FilterSection: React.FC = () => {
 
             {/* Period Buttons */}
             <div className="flex justify-center gap-2">
-                <Tabs className="md:w-1/4" fullWidth selectedKey={filters.period} onSelectionChange={key => handlePeriodChange(key as "weekly" | "monthly" | "yearly")}>
+                <Tabs
+                    className="md:w-1/4"
+                    fullWidth
+                    selectedKey={filters.period}
+                    onSelectionChange={key => (key === filters.period ? undefined : handlePeriodChange(key as "weekly" | "monthly" | "yearly"))}
+                >
                     <Tab key="weekly" title="本週" />
                     <Tab key="monthly" title="本月" />
                     <Tab key="yearly" title="今年" />

@@ -26,7 +26,12 @@ export const DashboardPage = () => {
         <React.Fragment>
             <h2 className="my-2 text-2xl font-bold lg:my-0 lg:text-3xl">統計分析</h2>
 
-            <Tabs className="md:w-1/4" fullWidth selectedKey={selectedPeriod} onSelectionChange={key => handlePeriodChange(key as "weekly" | "monthly" | "yearly")}>
+            <Tabs
+                className="md:w-1/4"
+                fullWidth
+                selectedKey={selectedPeriod}
+                onSelectionChange={key => (key === selectedPeriod ? undefined : handlePeriodChange(key as "weekly" | "monthly" | "yearly"))}
+            >
                 <Tab key="weekly" title="本週" />
                 <Tab key="monthly" title="本月" />
                 <Tab key="yearly" title="今年" />
