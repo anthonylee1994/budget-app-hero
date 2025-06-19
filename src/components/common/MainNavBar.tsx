@@ -8,7 +8,7 @@ import {Icon} from "@iconify/react";
 const navLinks = [
     {href: "/dashboard", label: "統計分析", icon: "mdi:chart-bar"},
     {href: "/transactions", label: "交易記錄", icon: "mdi:view-list"},
-    {href: "/categories", label: "分類管理", icon: "mdi:cog"},
+    {href: "/categories", label: "分類管理", icon: "material-symbols:category"},
 ];
 
 export const MainNavBar = () => {
