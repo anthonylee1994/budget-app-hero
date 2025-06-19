@@ -23,8 +23,8 @@ export const SettingsPage = () => {
         formState: {errors, isDirty},
     } = useForm<FormData>({
         defaultValues: {
-            name: "",
-            avatar_url: "",
+            name: user?.name || "",
+            avatar_url: user?.avatar_url || "",
         },
         mode: "onChange",
     });
@@ -32,13 +32,16 @@ export const SettingsPage = () => {
     const watchedAvatarUrl = watch("avatar_url");
 
     useEffect(() => {
+        reset({
+            name: user?.name || "",
+            avatar_url: user?.avatar_url || "",
+        });
+    }, [user, reset]);
+
+    useEffect(() => {
         const loadProfile = async () => {
             try {
-                const profile = user || (await fetchProfile());
-                reset({
-                    name: profile.name,
-                    avatar_url: profile.avatar_url || "",
-                });
+                await fetchProfile();
             } catch (error) {
                 console.error("Failed to load profile:", error);
                 addToast({
@@ -50,7 +53,7 @@ export const SettingsPage = () => {
         };
 
         loadProfile();
-    }, [user, fetchProfile, reset]);
+    }, [fetchProfile]);
 
     const onSubmit = async (data: FormData) => {
         setIsLoading(true);
