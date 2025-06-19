@@ -114,7 +114,6 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
                                         }}
                                         isInvalid={!!errors.budget_type}
                                         errorMessage={errors.budget_type?.message}
-                                        isRequired
                                     >
                                         <SelectItem key="expense">支出</SelectItem>
                                         <SelectItem key="income">收入</SelectItem>
