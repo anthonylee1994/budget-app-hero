@@ -82,7 +82,7 @@ export const IconPicker: React.FC<Props> = ({value, onChange}) => {
         <div className="flex flex-col gap-4">
             <Autocomplete
                 label="選擇圖示"
-                placeholder="輸入關鍵字搜尋圖示 (例如: money, food, car)"
+                placeholder="輸入關鍵字搜尋圖示"
                 isLoading={isLoading}
                 items={items}
                 inputValue={inputValue}
