@@ -175,7 +175,6 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, transactio
                                         onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                                         isInvalid={!!errors.amount}
                                         errorMessage={errors.amount?.message}
-                                        isRequired
                                     />
                                 )}
                             />
