@@ -96,26 +96,17 @@ export const SettingsPage = () => {
 
     return (
         <div className="mx-auto max-w-md space-y-6">
-            {/* Header */}
-            <div>
-                <h2 className="text-2xl font-bold lg:text-3xl">個人設定</h2>
-            </div>
-
-            {/* Profile Settings Card */}
+            <h2 className="text-2xl font-bold lg:text-3xl">個人設定</h2>
             <Card className="p-3">
                 <CardHeader className="pb-4">
                     <h3 className="text-lg font-semibold">個人資料</h3>
                 </CardHeader>
                 <CardBody className="pt-6">
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                        {/* Avatar Section */}
                         <div className="flex flex-col items-center space-y-4">
                             <AvatarUploader value={watchedAvatarUrl} onChange={handleAvatarChange} />
                         </div>
-
-                        {/* User Information */}
                         <div className="space-y-4">
-                            {/* Display Name */}
                             <Controller
                                 name="name"
                                 control={control}
@@ -144,8 +135,6 @@ export const SettingsPage = () => {
                                 )}
                             />
                         </div>
-
-                        {/* Action Buttons */}
                         <div className="flex gap-3 pt-4">
                             <Button color="primary" type="submit" isLoading={isLoading} isDisabled={!isDirty} className="flex-1">
                                 儲存變更

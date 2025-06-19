@@ -41,7 +41,6 @@ export const TransactionsPage = () => {
 
     return (
         <div className="space-y-6">
-            {/* Header */}
             <div className="flex items-center justify-between">
                 <h2 className="my-2 text-2xl font-bold lg:my-0 lg:text-3xl">交易記錄</h2>
                 <Button color="primary" onPress={handleOpenAddModal}>
@@ -49,20 +48,10 @@ export const TransactionsPage = () => {
                     新增交易
                 </Button>
             </div>
-
-            {/* Filter Section */}
             <FilterSection />
-
-            {/* Transaction List */}
             <TransactionList onEditTransaction={handleEditTransaction} onDeleteTransaction={handleDeleteTransaction} />
-
-            {/* Stats Section */}
             <TransactionsStats />
-
-            {/* Edit Modal */}
             <EditModal isOpen={isEditModalOpen} onClose={handleCloseEditModal} transaction={editingTransaction} />
-
-            {/* Delete Modal */}
             {deletingTransaction && <DeleteModal isOpen={isDeleteModalOpen} onClose={handleCloseDeleteModal} transaction={deletingTransaction} />}
         </div>
     );

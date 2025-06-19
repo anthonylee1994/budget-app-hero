@@ -51,7 +51,6 @@ export const CategoriesPage = () => {
 
     return (
         <div className="space-y-6">
-            {/* Header */}
             <div className="flex items-center justify-between">
                 <h2 className="my-2 text-2xl font-bold lg:my-0 lg:text-3xl">分類管理</h2>
                 <Button color="primary" onPress={handleOpenCreateModal}>
@@ -59,8 +58,6 @@ export const CategoriesPage = () => {
                     新增分類
                 </Button>
             </div>
-
-            {/* Filters */}
             <div className="flex flex-col items-center gap-4 sm:flex-row">
                 <Input fullWidth size="lg" placeholder="搜尋分類名稱..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
                 <Select
@@ -77,13 +74,9 @@ export const CategoriesPage = () => {
                     <SelectItem key="expense">支出</SelectItem>
                 </Select>
             </div>
-
             <CategoryList searchQuery={searchQuery} typeFilter={typeFilter} onEditCategory={handleOpenEditModal} onDeleteCategory={handleOpenDeleteModal} />
-
             <StatsSection categories={categories} filteredCategories={filteredCategories} />
-
             <EditModal isOpen={isModalOpen} onClose={handleCloseEditModal} category={editingCategory} />
-
             {deletingCategory && <DeleteModal isOpen={isDeleteModalOpen} onClose={handleCloseDeleteModal} category={deletingCategory} />}
         </div>
     );

@@ -25,7 +25,6 @@ export const DashboardPage = () => {
     return (
         <React.Fragment>
             <h2 className="my-2 text-2xl font-bold lg:my-0 lg:text-3xl">統計分析</h2>
-
             <Tabs
                 className="md:w-1/4"
                 fullWidth
@@ -36,7 +35,6 @@ export const DashboardPage = () => {
                 <Tab key="monthly" title="本月" />
                 <Tab key="yearly" title="今年" />
             </Tabs>
-
             {isLoading ? (
                 <div className="flex h-64 items-center justify-center">
                     <Spinner size="lg" />
