@@ -54,7 +54,7 @@ export const CategoriesPage = () => {
             <div className="flex items-center justify-between">
                 <h2 className="my-2 text-2xl font-bold lg:my-0 lg:text-3xl">分類管理</h2>
                 <Button color="primary" onPress={handleOpenCreateModal}>
-                    <Icon icon="material-symbols:category" className="text-lg" />
+                    <Icon icon="mdi:plus" className="text-lg" />
                     新增分類
                 </Button>
             </div>
