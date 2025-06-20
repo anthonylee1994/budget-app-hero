@@ -63,7 +63,7 @@ export const MainNavBar = () => {
                     <NavbarMenuItem key={`${item}-${index}`} className="w-full">
                         <Link
                             as={RouterLink}
-                            className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200"
+                            className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200 dark:hover:bg-gray-800"
                             size="lg"
                             color={pathname === item.href ? "primary" : "foreground"}
                             to={item.href}
@@ -87,7 +87,7 @@ export const MainNavBar = () => {
                         as={RouterLink}
                         to="/settings"
                         color="foreground"
-                        className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200"
+                        className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200 dark:hover:bg-gray-800"
                         size="lg"
                     >
                         <Icon icon="mdi:cog" className="mr-2" />
@@ -96,7 +96,14 @@ export const MainNavBar = () => {
                 </NavbarMenuItem>
 
                 <NavbarMenuItem className="w-full">
-                    <Link as={RouterLink} href="#" onPress={logout} className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200" size="lg" color="danger">
+                    <Link
+                        as={RouterLink}
+                        href="#"
+                        onPress={logout}
+                        className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200 dark:hover:bg-gray-800"
+                        size="lg"
+                        color="danger"
+                    >
                         <Icon icon="mdi:logout" className="mr-2" />
                         登出
                     </Link>
