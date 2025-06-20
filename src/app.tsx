@@ -1,4 +1,4 @@
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import {IndexPage} from "./pages";
 import {ProtectedRoute} from "./components/auth/ProtectedRoute";
 import {DashboardPage} from "./pages/dashboard";
@@ -52,6 +52,7 @@ export const App = () => {
                         </ProtectedRoute>
                     }
                 />
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </MainLayout>
     );
