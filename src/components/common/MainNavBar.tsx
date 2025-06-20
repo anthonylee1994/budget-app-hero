@@ -30,7 +30,7 @@ export const MainNavBar = () => {
             <NavbarContent className="hidden gap-8 md:flex" justify="center">
                 {navLinks.map(link => (
                     <NavbarItem isActive={pathname === link.href} key={link.href}>
-                        <Link as={RouterLink} to={link.href} size="lg" color={pathname === link.href ? "primary" : "foreground"}>
+                        <Link as={RouterLink} to={link.href} size="lg" className={`${pathname === link.href ? "text-blue-500 dark:text-blue-400" : "text-gray-800 dark:text-gray-200"}`}>
                             {link.icon && <Icon icon={link.icon} className="mr-2" />}
                             {link.label}
                         </Link>
@@ -63,9 +63,8 @@ export const MainNavBar = () => {
                     <NavbarMenuItem key={`${item}-${index}`} className="w-full">
                         <Link
                             as={RouterLink}
-                            className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200 dark:hover:bg-gray-800"
+                            className={`flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200 dark:hover:bg-gray-800 ${pathname === item.href ? "text-blue-500 dark:text-blue-400" : "text-gray-800 dark:text-gray-200"}`}
                             size="lg"
-                            color={pathname === item.href ? "primary" : "foreground"}
                             to={item.href}
                             onPress={() => setIsMenuOpen(false)}
                         >
