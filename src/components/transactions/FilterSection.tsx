@@ -1,15 +1,11 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Select, SelectItem, Tabs, Tab, SelectSection} from "@heroui/react";
 import {useCategoryStore} from "@/stores/categoryStore";
 import {useTransactionStore} from "@/stores/transactionStore";
 
 export const FilterSection = () => {
-    const {categories, fetchCategories} = useCategoryStore();
+    const {categories} = useCategoryStore();
     const {filters, setFilters} = useTransactionStore();
-
-    useEffect(() => {
-        fetchCategories();
-    }, [fetchCategories]);
 
     const handleSortChange = (keys: any) => {
         const selectedKey = Array.from(keys)[0] as string;

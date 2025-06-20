@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Button} from "@heroui/button";
 import type {Transaction} from "@/types/Transaction";
 import {FilterSection} from "@/components/transactions/FilterSection";
@@ -7,12 +7,18 @@ import {EditModal} from "@/components/transactions/EditModal";
 import {DeleteModal} from "@/components/transactions/DeleteModal";
 import {TransactionsStats} from "@/components/transactions/TransactionsStats";
 import {Icon} from "@iconify/react";
+import {useCategoryStore} from "@/stores/categoryStore";
 
 export const TransactionsPage = () => {
+    const {fetchCategories} = useCategoryStore();
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null);
     const [deletingTransaction, setDeletingTransaction] = useState<Transaction | null>(null);
+
+    useEffect(() => {
+        fetchCategories();
+    }, [fetchCategories]);
 
     const handleOpenAddModal = () => {
         setEditingTransaction(null);

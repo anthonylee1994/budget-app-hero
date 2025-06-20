@@ -21,7 +21,7 @@ interface FormData {
 
 export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, transaction}) => {
     const {createTransaction, updateTransaction, isLoading} = useTransactionStore();
-    const {categories, fetchCategories} = useCategoryStore();
+    const {categories} = useCategoryStore();
 
     const {
         control,
@@ -37,12 +37,6 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, transactio
         },
         mode: "onChange",
     });
-
-    useEffect(() => {
-        if (categories.length === 0) {
-            fetchCategories();
-        }
-    }, [categories.length, fetchCategories]);
 
     useEffect(() => {
         if (isOpen) {
