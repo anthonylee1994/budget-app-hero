@@ -96,7 +96,7 @@ export const SettingsPage = () => {
 
     return (
         <div className="mx-auto max-w-md space-y-6">
-            <h2 className="text-2xl font-bold lg:text-3xl">個人設定</h2>
+            <h2 className="my-2 text-2xl font-bold lg:my-0 lg:text-3xl">個人設定</h2>
             <Card className="p-3">
                 <CardHeader className="pb-4">
                     <h3 className="text-lg font-semibold">個人資料</h3>
