@@ -68,54 +68,52 @@ export const LoginForm: React.FC<LoginFormProps> = ({onSwitchToRegister}) => {
     };
 
     return (
-        <React.Fragment>
+        <div>
             {serverError && <Alert color="danger" title={serverError} className="mb-4" />}
-            <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-                <CardBody className="flex flex-col items-center px-1">
-                    <Input
-                        {...registerField("username", {
-                            required: "使用者名稱為必填項目",
-                        })}
-                        validationBehavior="aria"
-                        isInvalid={!!errors.username}
-                        errorMessage={errors.username?.message}
-                        startContent={<Icon icon="mdi:user" />}
-                        label="使用者名稱"
-                        placeholder="請輸入使用者名稱"
-                        labelPlacement="outside"
-                        className="mb-4"
-                        disabled={isSubmitting}
-                    />
-                    <Input
-                        {...registerField("password", {
-                            required: "密碼為必填項目",
-                        })}
-                        startContent={<Icon icon="mdi:lock" />}
-                        label="密碼"
-                        type={showPassword ? "text" : "password"}
-                        placeholder="請輸入密碼"
-                        labelPlacement="outside"
-                        className="mb-4"
-                        isInvalid={!!errors.password}
-                        errorMessage={errors.password?.message}
-                        endContent={
-                            <Button className="-mr-3" isIconOnly variant="light" onPress={() => setShowPassword(!showPassword)}>
-                                {showPassword ? <Icon icon="mdi:eye" /> : <Icon icon="mdi:eye-off" />}
-                            </Button>
-                        }
-                        disabled={isSubmitting}
-                    />
-                    <Button type="submit" color="primary" size="lg" className="mt-4 w-full" isLoading={isSubmitting}>
-                        登入
-                    </Button>
-                    <div className="mt-4 flex items-center justify-center text-center text-sm text-gray-500">
-                        還沒有帳戶嗎？{" "}
-                        <Link className="h-auto min-w-0 cursor-pointer p-0 text-sm text-primary" onPress={onSwitchToRegister}>
-                            註冊
-                        </Link>
-                    </div>
-                </CardBody>
+            <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col">
+                <Input
+                    {...registerField("username", {
+                        required: "使用者名稱為必填項目",
+                    })}
+                    validationBehavior="aria"
+                    isInvalid={!!errors.username}
+                    errorMessage={errors.username?.message}
+                    startContent={<Icon icon="mdi:user" />}
+                    label="使用者名稱"
+                    placeholder="請輸入使用者名稱"
+                    labelPlacement="outside"
+                    className="mb-4"
+                    disabled={isSubmitting}
+                />
+                <Input
+                    {...registerField("password", {
+                        required: "密碼為必填項目",
+                    })}
+                    startContent={<Icon icon="mdi:lock" />}
+                    label="密碼"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="請輸入密碼"
+                    labelPlacement="outside"
+                    className="mb-4"
+                    isInvalid={!!errors.password}
+                    errorMessage={errors.password?.message}
+                    endContent={
+                        <Button className="-mr-3" isIconOnly variant="light" onPress={() => setShowPassword(!showPassword)}>
+                            {showPassword ? <Icon icon="mdi:eye" /> : <Icon icon="mdi:eye-off" />}
+                        </Button>
+                    }
+                    disabled={isSubmitting}
+                />
+                <Button type="submit" color="primary" size="lg" className="mt-4 w-full" isLoading={isSubmitting}>
+                    登入
+                </Button>
+                <div className="mt-4 flex items-center justify-center text-center text-sm text-gray-500">
+                    還沒有帳戶嗎？{" "}
+                    <Link className="h-auto min-w-0 cursor-pointer p-0 text-sm text-primary" onPress={onSwitchToRegister}>
+                        註冊
+                    </Link>
+                </div>
             </form>
-        </React.Fragment>
+        </div>
     );
 };

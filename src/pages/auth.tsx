@@ -1,7 +1,7 @@
 import {Header} from "@/components/auth/Header";
 import {LoginForm} from "@/components/auth/LoginForm";
 import {RegisterForm} from "@/components/auth/RegisterForm";
-import {Card, Tabs, Tab} from "@heroui/react";
+import {Card, Tabs, Tab, CardBody} from "@heroui/react";
 import {useAuthStore} from "@/stores/authStore";
 import {useEffect, useState} from "react";
 import {useNavigate, useLocation} from "react-router-dom";
@@ -42,15 +42,17 @@ export const AuthPage = () => {
             <Header title={selectedTab === "login" ? "歡迎回來" : "創建您的帳戶"} description={selectedTab === "login" ? "登入您的智慧理財帳戶" : "開始您的智慧理財之旅"} />
 
             <Card className="p-4 py-4">
-                <Tabs fullWidth selectedKey={selectedTab} onSelectionChange={handleTabChange} classNames={{tabList: "w-full"}}>
-                    <Tab key="login" title="登入">
-                        <LoginForm onSwitchToRegister={() => handleTabChange("register")} />
-                    </Tab>
+                <CardBody className="p-0">
+                    <Tabs fullWidth selectedKey={selectedTab} onSelectionChange={handleTabChange} classNames={{tabList: "w-full"}}>
+                        <Tab key="login" title="登入">
+                            <LoginForm onSwitchToRegister={() => handleTabChange("register")} />
+                        </Tab>
 
-                    <Tab key="register" title="註冊">
-                        <RegisterForm onSwitchToLogin={() => handleTabChange("login")} />
-                    </Tab>
-                </Tabs>
+                        <Tab key="register" title="註冊">
+                            <RegisterForm onSwitchToLogin={() => handleTabChange("login")} />
+                        </Tab>
+                    </Tabs>
+                </CardBody>
             </Card>
         </div>
     );
