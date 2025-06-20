@@ -18,7 +18,7 @@ export const SummaryCards = () => {
                     </div>
                     <div className="text-end">
                         <p className="text-sm text-gray-600 dark:text-gray-400">總收入</p>
-                        <p className="text-2xl font-bold text-green-600">{NumberUtil.formatCurrency(summaryData.total_income)}</p>
+                        <p className="text-2xl font-bold text-green-600 dark:text-green-400">{NumberUtil.formatCurrency(summaryData.total_income)}</p>
                     </div>
                 </CardBody>
             </Card>
@@ -29,7 +29,7 @@ export const SummaryCards = () => {
                     </div>
                     <div className="text-end">
                         <p className="text-sm text-gray-600 dark:text-gray-400">總支出</p>
-                        <p className="text-2xl font-bold text-red-600">{NumberUtil.formatCurrency(summaryData.total_expenses)}</p>
+                        <p className="text-2xl font-bold text-red-600 dark:text-red-400">{NumberUtil.formatCurrency(summaryData.total_expenses)}</p>
                     </div>
                 </CardBody>
             </Card>
@@ -40,7 +40,7 @@ export const SummaryCards = () => {
                     </div>
                     <div className="text-end">
                         <p className="text-sm text-gray-600 dark:text-gray-400">淨收益</p>
-                        <p className={`text-2xl font-bold ${summaryData.net_balance >= 0 ? "text-blue-600" : "text-red-600"}`}>
+                        <p className={`text-2xl font-bold ${summaryData.net_balance >= 0 ? "text-blue-600 dark:text-blue-400" : "text-red-600 dark:text-red-400"}`}>
                             {summaryData.net_balance >= 0 ? `+${NumberUtil.formatCurrency(summaryData.net_balance)}` : `-${NumberUtil.formatCurrency(Math.abs(summaryData.net_balance))}`}
                         </p>
                     </div>
