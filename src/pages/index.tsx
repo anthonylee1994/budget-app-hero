@@ -5,7 +5,6 @@ import {Ready} from "@/components/landing/Ready";
 import {Statistics} from "@/components/landing/Statistics";
 import {WhyUS} from "@/components/landing/WhyUS";
 import {useAuthStore} from "@/stores/authStore";
-import React from "react";
 import {Navigate} from "react-router-dom";
 
 export const IndexPage = () => {
@@ -16,13 +15,13 @@ export const IndexPage = () => {
     }
 
     return (
-        <React.Fragment>
+        <div className="pt-[65px]">
             <LandingNavBar />
             <Banner />
             <Statistics />
             <WhyUS />
             <Ready />
             <Footer />
-        </React.Fragment>
+        </div>
     );
 };
