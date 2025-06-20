@@ -8,15 +8,16 @@ export const ThemeSwitcher = () => {
     return (
         <Button
             isIconOnly
-            variant="bordered"
+            variant="light"
+            className="transition-all duration-300"
             onPress={() => {
                 setTheme(theme === "dark" ? "light" : "dark");
             }}
         >
             {theme === "dark" ? (
-                <Icon fontSize={20} icon="mdi:weather-sunny" className="text-blue-500 dark:text-white" />
+                <Icon fontSize={24} icon="mdi:weather-sunny" className="text-blue-500 dark:text-white" />
             ) : (
-                <Icon fontSize={20} icon="mdi:weather-night" className="text-blue-500 dark:text-white" />
+                <Icon fontSize={24} icon="mdi:weather-night" className="text-blue-500 dark:text-white" />
             )}
         </Button>
     );
