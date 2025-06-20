@@ -1,4 +1,4 @@
-import {Button} from "@heroui/button";
+import {Switch} from "@heroui/react";
 import {Icon} from "@iconify/react";
 import {useTheme} from "next-themes";
 
@@ -6,19 +6,11 @@ export const ThemeSwitcher = () => {
     const {theme, setTheme} = useTheme();
 
     return (
-        <Button
-            isIconOnly
-            variant="light"
-            className="transition-all duration-300"
-            onPress={() => {
-                setTheme(theme === "dark" ? "light" : "dark");
-            }}
-        >
-            {theme === "dark" ? (
-                <Icon fontSize={24} icon="mdi:weather-sunny" className="text-primary-500 dark:text-white" />
-            ) : (
-                <Icon fontSize={24} icon="mdi:weather-night" className="text-primary-500 dark:text-white" />
-            )}
-        </Button>
+        <Switch
+            isSelected={theme === "dark"}
+            onValueChange={() => setTheme(theme === "dark" ? "light" : "dark")}
+            size="lg"
+            thumbIcon={({isSelected, className}) => (isSelected ? <Icon icon="mdi:weather-night" className={className} /> : <Icon icon="mdi:weather-sunny" className={className} />)}
+        />
     );
 };
