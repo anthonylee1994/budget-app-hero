@@ -37,7 +37,7 @@ export const DashboardPage = () => {
             </Tabs>
             {isLoading ? (
                 <div className="flex h-64 items-center justify-center">
-                    <Spinner size="lg" />
+                    <Spinner variant="simple" size="lg" />
                 </div>
             ) : (
                 <React.Fragment>

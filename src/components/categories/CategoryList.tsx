@@ -30,7 +30,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({searchQuery, typeFilt
     if (isLoading) {
         return (
             <div className="flex items-center justify-center py-12">
-                <Spinner size="lg" />
+                <Spinner variant="simple" size="lg" />
             </div>
         );
     }
