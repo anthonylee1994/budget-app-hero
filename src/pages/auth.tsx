@@ -42,7 +42,7 @@ export const AuthPage = () => {
             <Header title={selectedTab === "login" ? "歡迎回來" : "創建您的帳戶"} description={selectedTab === "login" ? "登入您的智慧理財帳戶" : "開始您的智慧理財之旅"} />
 
             <Card className="p-4 py-4">
-                <Tabs selectedKey={selectedTab} onSelectionChange={handleTabChange} classNames={{tabList: "w-full"}}>
+                <Tabs fullWidth selectedKey={selectedTab} onSelectionChange={handleTabChange} classNames={{tabList: "w-full"}}>
                     <Tab key="login" title="登入">
                         <LoginForm onSwitchToRegister={() => handleTabChange("register")} />
                     </Tab>
