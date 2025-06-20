@@ -6,6 +6,7 @@ import {useAuthStore} from "@/stores/authStore";
 import {useRef, useState} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {useNavigate} from "react-router-dom";
+import React from "react";
 
 export interface RegisterFormData {
     username: string;
@@ -103,7 +104,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({onSwitchToLogin}) => 
     };
 
     return (
-        <>
+        <React.Fragment>
             {serverError && <Alert color="danger" title={serverError} className="mb-4" />}
             <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <CardBody className="flex flex-col items-center px-1">
@@ -219,6 +220,6 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({onSwitchToLogin}) => 
                     </div>
                 </CardBody>
             </form>
-        </>
+        </React.Fragment>
     );
 };

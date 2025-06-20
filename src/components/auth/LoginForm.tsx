@@ -4,6 +4,7 @@ import {useForm} from "react-hook-form";
 import {useAuthStore} from "@/stores/authStore";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import React from "react";
 
 interface LoginFormData {
     username: string;
@@ -67,7 +68,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({onSwitchToRegister}) => {
     };
 
     return (
-        <>
+        <React.Fragment>
             {serverError && <Alert color="danger" title={serverError} className="mb-4" />}
             <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <CardBody className="flex flex-col items-center px-1">
@@ -115,6 +116,6 @@ export const LoginForm: React.FC<LoginFormProps> = ({onSwitchToRegister}) => {
                     </div>
                 </CardBody>
             </form>
-        </>
+        </React.Fragment>
     );
 };
