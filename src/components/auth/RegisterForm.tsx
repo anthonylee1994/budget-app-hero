@@ -1,6 +1,6 @@
 import {AvatarUploader} from "@/components/auth/AvatarUploader";
 import {Icon} from "@iconify/react";
-import {addToast, Alert, Button, CardBody, Input, Link} from "@heroui/react";
+import {addToast, Alert, Button, Input, Link} from "@heroui/react";
 import {useForm, Controller} from "react-hook-form";
 import {useAuthStore} from "@/stores/authStore";
 import {useRef, useState} from "react";
