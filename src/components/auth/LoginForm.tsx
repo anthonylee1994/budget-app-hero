@@ -107,7 +107,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({onSwitchToRegister}) => {
                 <Button type="submit" color="primary" size="lg" className="mt-4 w-full" isLoading={isSubmitting}>
                     登入
                 </Button>
-                <div className="mt-4 flex items-center justify-center text-center text-sm text-gray-500">
+                <div className="mt-4 flex items-center justify-center text-center text-sm text-default-500">
                     還沒有帳戶嗎？{" "}
                     <Link className="h-auto min-w-0 cursor-pointer p-0 text-sm text-primary" onPress={onSwitchToRegister}>
                         註冊

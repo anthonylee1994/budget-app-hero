@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {Spinner, Button, Pagination} from "@heroui/react";
+import {Spinner, Pagination} from "@heroui/react";
 import {useTransactionStore} from "@/stores/transactionStore";
 import {TransactionCard} from "./TransactionCard";
 import type {Transaction} from "@/types/Transaction";
@@ -10,7 +10,7 @@ interface TransactionListProps {
 }
 
 export const TransactionList: React.FC<TransactionListProps> = ({onEditTransaction, onDeleteTransaction}) => {
-    const {transactions, isLoading, error, pagination, filters, fetchTransactions, setFilters} = useTransactionStore();
+    const {transactions, isLoading, pagination, filters, fetchTransactions, setFilters} = useTransactionStore();
 
     useEffect(() => {
         fetchTransactions();
@@ -28,26 +28,12 @@ export const TransactionList: React.FC<TransactionListProps> = ({onEditTransacti
         );
     }
 
-    if (error) {
-        return (
-            <div className="flex items-center justify-center py-12">
-                <div className="text-center">
-                    <p className="text-lg font-medium text-red-500">載入失敗</p>
-                    <p className="mt-2 text-gray-500">{error}</p>
-                    <Button color="primary" onPress={() => fetchTransactions()} className="mt-4">
-                        重新載入
-                    </Button>
-                </div>
-            </div>
-        );
-    }
-
     if (transactions.length === 0) {
         return (
             <div className="flex items-center justify-center py-12">
                 <div className="text-center">
-                    <p className="text-lg text-gray-500">沒有找到交易記錄</p>
-                    <p className="mt-2 text-gray-400">點擊上方的「新增交易」按鈕來創建第一筆交易</p>
+                    <p className="text-lg text-default-500">沒有找到交易記錄</p>
+                    <p className="mt-2 text-default-400">點擊上方的「新增交易」按鈕來創建第一筆交易</p>
                 </div>
             </div>
         );

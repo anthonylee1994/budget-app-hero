@@ -88,7 +88,7 @@ export const SettingsPage = () => {
         return (
             <MainLayout>
                 <div className="flex items-center justify-center py-12">
-                    <p className="text-gray-500">載入中...</p>
+                    <p className="text-default-500">載入中...</p>
                 </div>
             </MainLayout>
         );
@@ -129,7 +129,7 @@ export const SettingsPage = () => {
                                 }}
                                 render={({field}) => (
                                     <div>
-                                        <label className="mb-2 block text-sm font-medium text-gray-700">姓名</label>
+                                        <label className="mb-2 block text-sm font-medium text-default-700">姓名</label>
                                         <Input {...field} placeholder="請輸入您的姓名" isInvalid={!!errors.name} errorMessage={errors.name?.message} />
                                     </div>
                                 )}

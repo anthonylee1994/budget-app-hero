@@ -52,7 +52,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, transaction}) => 
             <ModalContent>
                 <ModalHeader className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
-                        <Icon icon="mdi:alert-circle" className="text-red-500" />
+                        <Icon icon="mdi:alert-circle" className="text-danger-500" />
                         刪除交易記錄
                     </div>
                 </ModalHeader>
@@ -60,20 +60,20 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, transaction}) => 
                 <ModalBody>
                     <div className="flex flex-col gap-4">
                         {/* Warning Alert */}
-                        <Card className="border border-red-200 bg-red-50">
+                        <Card className="border border-danger-200 bg-danger-50">
                             <CardBody className="p-4">
                                 <div className="flex items-start gap-3">
-                                    <Icon icon="mdi:alert-circle" className="mt-0.5 flex-shrink-0 text-red-500" />
+                                    <Icon icon="mdi:alert-circle" className="mt-0.5 flex-shrink-0 text-danger-500" />
                                     <div>
-                                        <h4 className="mb-1 font-semibold text-red-800">警告！</h4>
-                                        <p className="text-sm text-red-700">此操作無法復原。刪除後將無法恢復此交易記錄。</p>
+                                        <h4 className="mb-1 font-semibold text-danger-800">警告！</h4>
+                                        <p className="text-sm text-danger-700">此操作無法復原。刪除後將無法恢復此交易記錄。</p>
                                     </div>
                                 </div>
                             </CardBody>
                         </Card>
 
                         {/* Transaction Info */}
-                        <Card>
+                        <Card className="border border-default-200 bg-default-50">
                             <CardBody className="p-4">
                                 <div className="flex items-center gap-3">
                                     <div className="flex h-8 w-8 items-center justify-center rounded-full text-sm text-white" style={{backgroundColor: transaction.category.color}}>
@@ -81,7 +81,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, transaction}) => 
                                     </div>
                                     <div className="flex-1">
                                         <h3 className="text-lg font-semibold">{transaction.description || transaction.category.name}</h3>
-                                        <p className="text-sm text-gray-500">
+                                        <p className="text-sm text-default-500">
                                             {moment(transaction.date).format("YYYY-MM-DD HH:mm")} ({moment(transaction.date).fromNow()})
                                         </p>
                                     </div>
@@ -89,7 +89,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, transaction}) => 
                                         <Chip className="absolute right-4 top-4" color={transaction.category.budget_type === "income" ? "success" : "danger"} variant="flat" size="sm">
                                             {transaction.category.name}
                                         </Chip>
-                                        <div className={`mt-8 text-xl font-bold ${transaction.category.budget_type === "expense" ? "text-red-500" : "text-green-500"}`}>
+                                        <div className={`mt-8 text-xl font-bold ${transaction.category.budget_type === "expense" ? "text-danger-500" : "text-success-500"}`}>
                                             {isIncome ? "+" : "-"}
                                             {NumberUtil.formatCurrency(amount)}
                                         </div>
@@ -98,7 +98,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, transaction}) => 
                             </CardBody>
                         </Card>
 
-                        <p className="text-center text-sm text-gray-600">確定要刪除這筆交易記錄嗎？</p>
+                        <p className="text-center text-sm text-default-600">確定要刪除這筆交易記錄嗎？</p>
                     </div>
                 </ModalBody>
 

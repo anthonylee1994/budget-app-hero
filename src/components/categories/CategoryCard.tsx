@@ -39,7 +39,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({category, onEdit, onD
                     </div>
                 </DropdownItem>
                 <DropdownItem key="delete" onPress={() => onDelete(category)}>
-                    <div className="flex items-center gap-2 text-red-500">
+                    <div className="flex items-center gap-2 text-danger-500">
                         <Icon icon="mdi:trash-can" className="text-lg" />
                         刪除
                     </div>

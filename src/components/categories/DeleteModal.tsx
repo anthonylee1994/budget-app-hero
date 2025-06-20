@@ -47,7 +47,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, category}) => {
             <ModalContent>
                 <ModalHeader className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
-                        <Icon icon="mdi:alert-circle" className="text-red-500" />
+                        <Icon icon="mdi:alert-circle" className="text-danger-500" />
                         刪除分類
                     </div>
                 </ModalHeader>
@@ -55,20 +55,20 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, category}) => {
                 <ModalBody>
                     <div className="flex flex-col gap-4">
                         {/* Warning Alert */}
-                        <Card className="border border-red-200 bg-red-50">
+                        <Card className="border border-danger-200 bg-danger-50">
                             <CardBody className="p-4">
                                 <div className="flex items-start gap-3">
-                                    <Icon icon="mdi:alert-circle" className="mt-0.5 flex-shrink-0 text-red-500" />
+                                    <Icon icon="mdi:alert-circle" className="mt-0.5 flex-shrink-0 text-danger-500" />
                                     <div>
-                                        <h4 className="mb-1 font-semibold text-red-800">警告！</h4>
-                                        <p className="text-sm text-red-700">此操作無法復原。刪除分類後，所有相關的交易紀錄可能會受到影響。</p>
+                                        <h4 className="mb-1 font-semibold text-danger-800">警告！</h4>
+                                        <p className="text-sm text-danger-700">此操作無法復原。刪除分類後，所有相關的交易紀錄可能會受到影響。</p>
                                     </div>
                                 </div>
                             </CardBody>
                         </Card>
 
                         {/* Category Info */}
-                        <Card>
+                        <Card className="border border-default-200 bg-default-50">
                             <CardBody className="p-4">
                                 <div className="flex items-center gap-3">
                                     <div className="h-6 w-6 rounded-full" style={{backgroundColor: category.color}} />
@@ -82,7 +82,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, category}) => {
                             </CardBody>
                         </Card>
 
-                        <p className="text-center text-sm text-gray-600">
+                        <p className="text-center text-sm text-default-600">
                             確定要刪除分類「<span className="font-semibold">{category.name}</span>」嗎？
                         </p>
                     </div>

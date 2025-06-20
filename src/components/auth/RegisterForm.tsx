@@ -213,7 +213,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({onSwitchToLogin}) => 
                     註冊
                 </Button>
 
-                <div className="mt-4 flex items-center justify-center text-center text-sm text-gray-500">
+                <div className="mt-4 flex items-center justify-center text-center text-sm text-default-500">
                     已經有帳戶了嗎？{" "}
                     <Link className="h-auto min-w-0 cursor-pointer p-0 text-sm text-primary" onPress={onSwitchToLogin}>
                         登入

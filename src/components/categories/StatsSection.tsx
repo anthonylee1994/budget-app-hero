@@ -24,31 +24,31 @@ export const StatsSection: React.FC<StatsSectionProps> = ({categories, filteredC
         {
             title: "總分類數",
             value: stats.total,
-            color: "text-blue-500",
+            color: "text-primary-500",
         },
         {
             title: "收入分類",
             value: stats.income,
-            color: "text-green-500",
+            color: "text-success-500",
         },
         {
             title: "支出分類",
             value: stats.expense,
-            color: "text-red-500",
+            color: "text-danger-500",
         },
         {
             title: "顯示中",
             value: stats.displayed,
-            color: "text-gray-500",
+            color: "text-default-500",
         },
     ];
 
     return (
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {statCards.map((stat, index) => (
-                <Card key={index} className="bg-content1 dark:bg-content1">
+                <Card key={index} className="bg-content1">
                     <CardBody className="p-4">
-                        <div className="text-sm text-gray-600 dark:text-gray-400">{stat.title}</div>
+                        <div className="text-sm text-default-600">{stat.title}</div>
                         <div className={`text-3xl font-bold ${stat.color}`}>{stat.value}</div>
                     </CardBody>
                 </Card>

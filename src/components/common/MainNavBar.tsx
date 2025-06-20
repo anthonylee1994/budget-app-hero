@@ -23,14 +23,14 @@ export const MainNavBar = () => {
             <NavbarContent>
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="md:hidden" />
                 <NavbarBrand>
-                    <Icon icon="fa-solid:wallet" className="mr-2 text-2xl text-blue-500 dark:text-white" />
-                    <span className="text-2xl font-light text-blue-500 dark:text-white">智慧理財</span>
+                    <Icon icon="fa-solid:wallet" className="mr-2 text-2xl text-primary-500 dark:text-white" />
+                    <span className="text-2xl font-light text-primary-500 dark:text-white">智慧理財</span>
                 </NavbarBrand>
             </NavbarContent>
             <NavbarContent className="hidden gap-8 md:flex" justify="center">
                 {navLinks.map(link => (
                     <NavbarItem isActive={pathname === link.href} key={link.href}>
-                        <Link as={RouterLink} to={link.href} size="lg" className={`${pathname === link.href ? "text-blue-500 dark:text-blue-400" : "text-gray-800 dark:text-gray-200"}`}>
+                        <Link as={RouterLink} to={link.href} size="lg" className={`${pathname === link.href ? "text-primary-500" : "text-default-800"}`}>
                             {link.icon && <Icon icon={link.icon} className="mr-2" />}
                             {link.label}
                         </Link>
@@ -63,7 +63,7 @@ export const MainNavBar = () => {
                     <NavbarMenuItem key={`${item}-${index}`} className="w-full">
                         <Link
                             as={RouterLink}
-                            className={`flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200 dark:hover:bg-gray-800 ${pathname === item.href ? "text-blue-500 dark:text-blue-400" : "text-gray-800 dark:text-gray-200"}`}
+                            className={`flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-default-200 ${pathname === item.href ? "text-primary-500" : "text-default-800"}`}
                             size="lg"
                             to={item.href}
                             onPress={() => setIsMenuOpen(false)}
@@ -86,7 +86,7 @@ export const MainNavBar = () => {
                         as={RouterLink}
                         to="/settings"
                         color="foreground"
-                        className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200 dark:hover:bg-gray-800"
+                        className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-default-200"
                         size="lg"
                     >
                         <Icon icon="mdi:cog" className="mr-2" />
@@ -99,7 +99,7 @@ export const MainNavBar = () => {
                         as={RouterLink}
                         href="#"
                         onPress={logout}
-                        className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-gray-200 dark:hover:bg-gray-800"
+                        className="flex w-full items-center justify-center rounded-lg px-2 py-3 transition-all hover:bg-default-200"
                         size="lg"
                         color="danger"
                     >

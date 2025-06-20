@@ -164,7 +164,7 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, transactio
                                         step="0.01"
                                         label="金額"
                                         placeholder="請輸入金額"
-                                        startContent={<span className="text-gray-500">$</span>}
+                                        startContent={<span className="text-default-500">$</span>}
                                         value={field.value?.toString() || ""}
                                         onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                                         isInvalid={!!errors.amount}

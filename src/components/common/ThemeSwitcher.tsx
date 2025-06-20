@@ -15,9 +15,9 @@ export const ThemeSwitcher = () => {
             }}
         >
             {theme === "dark" ? (
-                <Icon fontSize={24} icon="mdi:weather-sunny" className="text-blue-500 dark:text-white" />
+                <Icon fontSize={24} icon="mdi:weather-sunny" className="text-primary-500 dark:text-white" />
             ) : (
-                <Icon fontSize={24} icon="mdi:weather-night" className="text-blue-500 dark:text-white" />
+                <Icon fontSize={24} icon="mdi:weather-night" className="text-primary-500 dark:text-white" />
             )}
         </Button>
     );

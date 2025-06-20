@@ -66,21 +66,21 @@ export const ColorPicker: React.FC<Props> = ({value, onChange}: Props) => {
                     }}
                 />
                 <div className="flex flex-col items-start space-y-1">
-                    <p className="text-sm text-gray-600 dark:text-gray-300">已選擇顏色</p>
-                    <p className="font-mono text-xs text-gray-500 dark:text-gray-400">{value}</p>
+                    <p className="text-sm text-default-600">已選擇顏色</p>
+                    <p className="font-mono text-xs text-default-500">{value}</p>
                 </div>
             </div>
 
             {/* Color Grid */}
             <div className="w-full">
-                <p className="mb-3 text-sm text-gray-600 dark:text-gray-300">選擇顏色</p>
+                <p className="mb-3 text-sm text-default-600">選擇顏色</p>
                 <div className="grid grid-cols-6 gap-2 sm:grid-cols-10">
                     {DEFAULT_COLORS.map(color => (
                         <button
                             key={color}
                             type="button"
                             className={`cursor-pointer rounded-2xl border-3 transition-all duration-200 hover:scale-110 ${
-                                value === color ? "scale-105 border-gray-800" : "border-transparent hover:border-gray-500"
+                                value === color ? "scale-105 border-default-800" : "border-transparent hover:border-default-500"
                             }`}
                             style={{
                                 width: 32,
