@@ -2,9 +2,11 @@ import {useSummaryStore} from "@/stores/summaryStore";
 import {NumberUtil} from "@/utils/NumberUtil";
 import {Card, CardBody, CardHeader} from "@heroui/react";
 import {Doughnut} from "react-chartjs-2";
+import {useTheme} from "next-themes";
 
 export const ExpenseDonutChart = () => {
     const {summaryData, selectedPeriod} = useSummaryStore();
+    const {theme} = useTheme();
 
     const expenseDonutData = {
         labels: summaryData?.donut_chart.expense.map(item => item.name) || [],
@@ -23,6 +25,12 @@ export const ExpenseDonutChart = () => {
         plugins: {
             legend: {
                 position: "bottom" as const,
+                labels: {
+                    color: theme === "dark" ? "white" : undefined,
+                    font: {
+                        size: 12,
+                    },
+                },
             },
             tooltip: {
                 callbacks: {

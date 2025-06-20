@@ -7,6 +7,7 @@ import {useRef, useState} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {useNavigate} from "react-router-dom";
 import React from "react";
+import {useTheme} from "next-themes";
 
 export interface RegisterFormData {
     username: string;
@@ -23,6 +24,7 @@ interface RegisterFormProps {
 export const RegisterForm: React.FC<RegisterFormProps> = ({onSwitchToLogin}) => {
     const navigate = useNavigate();
     const {register} = useAuthStore();
+    const {theme} = useTheme();
     const checkUsernameExists = useAuthStore(state => state.checkUsernameExists);
 
     const [showPassword, setShowPassword] = useState(false);
@@ -205,7 +207,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({onSwitchToLogin}) => 
                     disabled={isSubmitting}
                 />
 
-                <ReCAPTCHA ref={recaptchaRef} sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY} onChange={handleCaptchaChange} />
+                <ReCAPTCHA theme={theme === "dark" ? "dark" : "light"} ref={recaptchaRef} sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY} onChange={handleCaptchaChange} />
 
                 <Button type="submit" color="primary" size="lg" className="mt-4 w-full" isLoading={isSubmitting} isDisabled={isSubmitting || !captchaValue}>
                     註冊

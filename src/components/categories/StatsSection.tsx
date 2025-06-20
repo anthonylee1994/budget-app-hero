@@ -46,7 +46,7 @@ export const StatsSection: React.FC<StatsSectionProps> = ({categories, filteredC
     return (
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {statCards.map((stat, index) => (
-                <Card key={index} className="bg-gray-50 dark:bg-gray-800">
+                <Card key={index} className="bg-gray-50 dark:bg-gray-900">
                     <CardBody className="p-4">
                         <div className="text-sm text-gray-600 dark:text-gray-400">{stat.title}</div>
                         <div className={`text-3xl font-bold ${stat.color}`}>{stat.value}</div>

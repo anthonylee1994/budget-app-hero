@@ -27,7 +27,7 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({transaction, on
                                 </div>
                                 <div className="flex flex-col gap-1">
                                     <h3 className="text-lg font-bold leading-5 text-foreground">{transaction.description || transaction.category.name}</h3>
-                                    <div className="flex items-center gap-2 text-sm text-default-400">{transaction.category.name}</div>
+                                    <div className="flex items-center gap-2 text-sm text-default-400 dark:text-default-500">{transaction.category.name}</div>
                                 </div>
                             </div>
 
@@ -36,7 +36,7 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({transaction, on
                                     {isIncome ? "+" : "-"}
                                     {NumberUtil.formatCurrency(amount)}
                                 </div>
-                                <span className="text-small text-default-400">{moment(transaction.date).fromNow()}</span>
+                                <span className="text-small text-default-400 dark:text-default-500">{moment(transaction.date).fromNow()}</span>
                             </div>
                         </div>
                     </CardBody>

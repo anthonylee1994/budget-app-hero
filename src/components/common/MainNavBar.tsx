@@ -4,6 +4,7 @@ import {Link as RouterLink, useLocation, useNavigate} from "react-router-dom";
 import {Avatar, Divider, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link} from "@heroui/react";
 import {useAuthStore} from "@/stores/authStore";
 import {Icon} from "@iconify/react";
+import {ThemeSwitcher} from "./ThemeSwitcher";
 
 const navLinks = [
     {href: "/dashboard", label: "統計分析", icon: "mdi:chart-bar"},
@@ -53,6 +54,9 @@ export const MainNavBar = () => {
                         </DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
+                <NavbarItem>
+                    <ThemeSwitcher />
+                </NavbarItem>
             </NavbarContent>
             <NavbarMenu className="mt-[env(safe-area-inset-top)] flex flex-col items-center">
                 {navLinks.map((item, index) => (

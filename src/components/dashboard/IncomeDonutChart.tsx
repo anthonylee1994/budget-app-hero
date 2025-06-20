@@ -2,8 +2,10 @@ import {Card, CardBody, CardHeader} from "@heroui/react";
 import {Doughnut} from "react-chartjs-2";
 import {useSummaryStore} from "@/stores/summaryStore";
 import {NumberUtil} from "@/utils/NumberUtil";
+import {useTheme} from "next-themes";
 
 export const IncomeDonutChart = () => {
+    const {theme} = useTheme();
     const {summaryData, selectedPeriod} = useSummaryStore();
 
     const incomeDonutData = {
@@ -23,6 +25,12 @@ export const IncomeDonutChart = () => {
         plugins: {
             legend: {
                 position: "bottom" as const,
+                labels: {
+                    color: theme === "dark" ? "white" : undefined,
+                    font: {
+                        size: 12,
+                    },
+                },
             },
             tooltip: {
                 callbacks: {

@@ -15,7 +15,7 @@ export const Header = ({title, description}: Props) => {
                 <Icon icon="fa-solid:wallet" className="mr-2 text-4xl text-blue-500" />
                 <span className="text-4xl font-light text-blue-500">智慧理財</span>
             </div>
-            <div className="mb-2 text-3xl text-black">{title}</div>
+            <div className="mb-2 text-3xl text-black dark:text-white">{title}</div>
             <div className="text-lg text-gray-500">{description}</div>
         </div>
     );

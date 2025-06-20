@@ -3,9 +3,11 @@ import {NumberUtil} from "@/utils/NumberUtil";
 import {Card, CardHeader, CardBody} from "@heroui/react";
 import moment from "moment";
 import {Bar} from "react-chartjs-2";
+import {useTheme} from "next-themes";
 
 export const TrendBarChart = () => {
     const {summaryData, selectedPeriod} = useSummaryStore();
+    const {theme} = useTheme();
 
     const barChartData = {
         labels:
@@ -40,15 +42,33 @@ export const TrendBarChart = () => {
         plugins: {
             legend: {
                 position: "top" as const,
+                labels: {
+                    color: theme === "dark" ? "white" : undefined,
+                    font: {
+                        size: 12,
+                    },
+                },
             },
         },
         scales: {
+            x: {
+                ticks: {
+                    color: theme === "dark" ? "rgba(255, 255, 255, 0.8)" : undefined,
+                },
+                grid: {
+                    color: theme === "dark" ? "rgba(255, 255, 255, 0.1)" : undefined,
+                },
+            },
             y: {
                 beginAtZero: true,
                 ticks: {
                     callback: function (value: any) {
                         return NumberUtil.formatCurrency(value);
                     },
+                    color: theme === "dark" ? "rgba(255, 255, 255, 0.8)" : undefined,
+                },
+                grid: {
+                    color: theme === "dark" ? "rgba(255, 255, 255, 0.1)" : undefined,
                 },
             },
         },
