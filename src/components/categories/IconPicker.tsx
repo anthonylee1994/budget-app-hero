@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {Autocomplete, AutocompleteItem} from "@heroui/react";
 import {Icon} from "@iconify/react";
 
@@ -27,15 +27,21 @@ interface Props {
 
 export const IconPicker: React.FC<Props> = ({value, onChange}) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [items, setItems] = useState<IconOption[]>([]);
-    const [inputValue, setInputValue] = useState(value);
-
-    useEffect(() => {
-        setInputValue(value);
-    }, [value]);
+    const [items, setItems] = useState<IconOption[]>(() => {
+        // Initialize with the current value if it exists
+        return value
+            ? [
+                  {
+                      key: value,
+                      label: value,
+                      icon: value,
+                  },
+              ]
+            : [];
+    });
 
     // Search function
-    const searchIcons = useCallback(async (query: string) => {
+    const searchIcons = async (query: string) => {
         if (!query.trim()) {
             setItems([]);
             return;
@@ -59,33 +65,31 @@ export const IconPicker: React.FC<Props> = ({value, onChange}) => {
         } finally {
             setIsLoading(false);
         }
-    }, []);
+    };
 
-    const handleInputChange = useCallback(
-        (value: string) => {
-            setInputValue(value);
+    useEffect(() => {
+        if (value) {
             searchIcons(value);
-        },
-        [searchIcons]
-    );
+        }
+    }, [value]);
 
-    const handleSelectionChange = useCallback(
-        (key: React.Key | null) => {
-            if (key) {
-                onChange(key.toString());
-            }
-        },
-        [onChange]
-    );
+    const handleInputChange = (value: string) => {
+        searchIcons(value);
+    };
+
+    const handleSelectionChange = (key: React.Key | null) => {
+        onChange(key?.toString() || null);
+    };
 
     return (
         <div className="flex flex-col gap-4">
             <Autocomplete
+                key={value} // Force re-render when value changes
                 label="選擇圖示"
                 placeholder="輸入關鍵字搜尋圖示"
                 isLoading={isLoading}
                 items={items}
-                inputValue={inputValue}
+                selectedKey={value}
                 onClear={() => onChange(null)}
                 onInputChange={handleInputChange}
                 onSelectionChange={handleSelectionChange}
