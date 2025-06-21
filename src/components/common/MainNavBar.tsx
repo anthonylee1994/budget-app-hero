@@ -23,8 +23,8 @@ export const MainNavBar = () => {
             <NavbarContent>
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="md:hidden" />
                 <NavbarBrand>
-                    <Icon icon="fa-solid:wallet" className="mr-2 text-2xl text-primary-500 dark:text-white" />
-                    <span className="text-2xl font-light text-primary-500 dark:text-white">智慧理財</span>
+                    <Icon icon="fa-solid:wallet" className="mr-2 select-none text-2xl text-primary-500 dark:text-white" />
+                    <span className="select-none text-2xl font-light text-primary-500 dark:text-white">智慧理財</span>
                 </NavbarBrand>
             </NavbarContent>
             <NavbarContent className="hidden gap-8 md:flex" justify="center">
@@ -40,7 +40,7 @@ export const MainNavBar = () => {
             <NavbarContent justify="end">
                 <Dropdown>
                     <DropdownTrigger>
-                        <NavbarItem className="hidden cursor-pointer items-center sm:flex">
+                        <NavbarItem className="hidden cursor-pointer select-none items-center sm:flex">
                             <Avatar src={user?.avatar_url} />
                             <span className="ml-2">{user?.name}</span>
                         </NavbarItem>
@@ -75,7 +75,7 @@ export const MainNavBar = () => {
                 ))}
                 <Divider className="my-2" />
 
-                <NavbarMenuItem className="flex cursor-pointer items-center py-2">
+                <NavbarMenuItem className="flex select-none items-center py-2">
                     <Avatar src={user?.avatar_url} />
                     <span className="ml-2">{user?.name}</span>
                 </NavbarMenuItem>
