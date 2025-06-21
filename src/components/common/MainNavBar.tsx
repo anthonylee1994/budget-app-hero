@@ -6,7 +6,13 @@ import {useAuthStore} from "@/stores/authStore";
 import {Icon} from "@iconify/react";
 import {ThemeSwitcher} from "./ThemeSwitcher";
 
-const navLinks = [
+interface NavLink {
+    href: string;
+    label: string;
+    icon: string;
+}
+
+const navLinks: NavLink[] = [
     {href: "/dashboard", label: "統計分析", icon: "mdi:chart-bar"},
     {href: "/transactions", label: "交易記錄", icon: "mdi:view-list"},
     {href: "/categories", label: "分類管理", icon: "material-symbols:category"},
