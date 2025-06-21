@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 export const Banner = () => {
     return (
-        <div className="relative overflow-hidden bg-primary-100 py-5 pt-[calc(65px+env(safe-area-inset-top))]">
+        <div className="relative mt-[calc(65px+env(safe-area-inset-top))] overflow-hidden bg-primary-100 py-5">
             <div className="mx-auto flex max-w-5xl flex-col items-center justify-center p-4 md:justify-between md:p-0 lg:flex-row">
                 <div className="flex flex-col items-center p-2 text-center md:p-10 lg:max-w-[550px] lg:items-start lg:text-left">
                     <Chip size="lg" color="primary" className="mb-4">
