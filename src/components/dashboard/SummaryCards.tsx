@@ -1,13 +1,35 @@
-import {Card} from "@heroui/react";
+import {Card, Skeleton} from "@heroui/react";
 import {CardBody} from "@heroui/react";
 import {useSummaryStore} from "@/stores/summaryStore";
 import {Icon} from "@iconify/react";
 import {NumberUtil} from "@/utils/NumberUtil";
 
 export const SummaryCards = () => {
-    const {summaryData} = useSummaryStore();
+    const {summaryData, isLoading} = useSummaryStore();
 
-    if (!summaryData) return null;
+    if (isLoading) {
+        return (
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                {Array.from({length: 3}).map((_, index) => (
+                    <Card key={index}>
+                        <CardBody className="flex flex-row items-center justify-between gap-4 p-4">
+                            <Skeleton className="rounded-full">
+                                <div className="h-12 w-12 rounded-full bg-default-200"></div>
+                            </Skeleton>
+                            <div className="flex flex-col items-end gap-2">
+                                <Skeleton className="rounded-lg">
+                                    <div className="h-4 w-16 rounded-lg bg-default-200"></div>
+                                </Skeleton>
+                                <Skeleton className="rounded-lg">
+                                    <div className="h-7 w-48 rounded-lg bg-default-200"></div>
+                                </Skeleton>
+                            </div>
+                        </CardBody>
+                    </Card>
+                ))}
+            </div>
+        );
+    }
 
     return (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -18,7 +40,7 @@ export const SummaryCards = () => {
                     </div>
                     <div className="text-end">
                         <p className="text-sm text-default-500">總收入</p>
-                        <p className="text-2xl font-bold text-success-500">{NumberUtil.formatCurrency(summaryData.total_income)}</p>
+                        <p className="text-2xl font-bold text-success-500">{summaryData ? NumberUtil.formatCurrency(summaryData.total_income) : null}</p>
                     </div>
                 </CardBody>
             </Card>
@@ -29,7 +51,7 @@ export const SummaryCards = () => {
                     </div>
                     <div className="text-end">
                         <p className="text-sm text-default-500">總支出</p>
-                        <p className="text-2xl font-bold text-danger-500">{NumberUtil.formatCurrency(summaryData.total_expenses)}</p>
+                        <p className="text-2xl font-bold text-danger-500">{summaryData ? NumberUtil.formatCurrency(summaryData.total_expenses) : null}</p>
                     </div>
                 </CardBody>
             </Card>
@@ -40,8 +62,10 @@ export const SummaryCards = () => {
                     </div>
                     <div className="text-end">
                         <p className="text-sm text-default-500">淨收益</p>
-                        <p className={`text-2xl font-bold ${summaryData.net_balance >= 0 ? "text-primary-500" : "text-danger-500"}`}>
-                            {summaryData.net_balance >= 0 ? `+${NumberUtil.formatCurrency(summaryData.net_balance)}` : `-${NumberUtil.formatCurrency(Math.abs(summaryData.net_balance))}`}
+                        <p className={`text-2xl font-bold ${summaryData?.net_balance && summaryData.net_balance >= 0 ? "text-primary-500" : "text-danger-500"}`}>
+                            {summaryData?.net_balance && summaryData.net_balance >= 0
+                                ? `+${NumberUtil.formatCurrency(summaryData.net_balance)}`
+                                : `-${NumberUtil.formatCurrency(Math.abs(summaryData?.net_balance || 0))}`}
                         </p>
                     </div>
                 </CardBody>

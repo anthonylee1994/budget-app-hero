@@ -75,7 +75,7 @@ export const CategoriesPage = () => {
                 </Select>
             </div>
             <CategoryList searchQuery={searchQuery} typeFilter={typeFilter} onEditCategory={handleOpenEditModal} onDeleteCategory={handleOpenDeleteModal} />
-            <StatsSection categories={categories} filteredCategories={filteredCategories} />
+            <StatsSection filteredCategories={filteredCategories} />
             <EditModal isOpen={isModalOpen} onClose={handleCloseEditModal} category={editingCategory} />
             {deletingCategory && <DeleteModal isOpen={isDeleteModalOpen} onClose={handleCloseDeleteModal} category={deletingCategory} />}
         </div>

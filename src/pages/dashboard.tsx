@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import {Spinner} from "@heroui/react";
 import {useSummaryStore} from "@/stores/summaryStore";
 import {Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement} from "chart.js";
 import {Tab, Tabs} from "@heroui/react";
@@ -11,7 +10,7 @@ import {TrendBarChart} from "@/components/dashboard/TrendBarChart";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 export const DashboardPage = () => {
-    const {summaryData, isLoading, selectedPeriod, fetchSummary, setPeriod} = useSummaryStore();
+    const {summaryData, selectedPeriod, fetchSummary, setPeriod} = useSummaryStore();
 
     const handlePeriodChange = (period: "weekly" | "monthly" | "yearly") => {
         setPeriod(period);
@@ -35,24 +34,18 @@ export const DashboardPage = () => {
                 <Tab key="monthly" title="本月" />
                 <Tab key="yearly" title="今年" />
             </Tabs>
-            {isLoading ? (
-                <div className="flex h-64 items-center justify-center">
-                    <Spinner variant="simple" size="lg" />
-                </div>
-            ) : (
-                <React.Fragment>
-                    {summaryData && (
-                        <React.Fragment>
-                            <SummaryCards />
-                            <div className={`grid grid-cols-1 gap-6 ${summaryData.donut_chart.income.length > 0 && summaryData.donut_chart.expense.length > 0 ? "lg:grid-cols-2" : ""}`}>
-                                {summaryData.donut_chart.income.length > 0 && <IncomeDonutChart />}
-                                {summaryData.donut_chart.expense.length > 0 && <ExpenseDonutChart />}
-                            </div>
-                            {summaryData.bar_chart.length > 0 && <TrendBarChart />}
-                        </React.Fragment>
-                    )}
-                </React.Fragment>
-            )}
+            <React.Fragment>
+                {summaryData && (
+                    <React.Fragment>
+                        <SummaryCards />
+                        <div className={`grid grid-cols-1 gap-6 ${summaryData.donut_chart.income.length > 0 && summaryData.donut_chart.expense.length > 0 ? "lg:grid-cols-2" : ""}`}>
+                            {summaryData.donut_chart.income.length > 0 && <IncomeDonutChart />}
+                            {summaryData.donut_chart.expense.length > 0 && <ExpenseDonutChart />}
+                        </div>
+                        {summaryData.bar_chart.length > 0 && <TrendBarChart />}
+                    </React.Fragment>
+                )}
+            </React.Fragment>
         </React.Fragment>
     );
 };

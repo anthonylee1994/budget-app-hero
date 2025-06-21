@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo} from "react";
-import {Spinner} from "@heroui/react";
+import {Card, CardBody, Skeleton} from "@heroui/react";
 import {useCategoryStore} from "@/stores/categoryStore";
 import {CategoryCard} from "./CategoryCard";
 import type {Category} from "@/types/Category";
@@ -29,8 +29,28 @@ export const CategoryList: React.FC<CategoryListProps> = ({searchQuery, typeFilt
 
     if (isLoading) {
         return (
-            <div className="flex items-center justify-center py-12">
-                <Spinner variant="simple" size="lg" />
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {Array.from({length: 6}).map((_, index) => (
+                    <Card key={index} className="transition-all duration-300">
+                        <CardBody className="gap-3">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                    <Skeleton className="rounded-full">
+                                        <div className="h-12 w-12 rounded-full bg-default-200"></div>
+                                    </Skeleton>
+                                    <div>
+                                        <Skeleton className="rounded-lg">
+                                            <div className="h-5 w-24 rounded-lg bg-default-200"></div>
+                                        </Skeleton>
+                                    </div>
+                                </div>
+                                <Skeleton className="rounded-full">
+                                    <div className="h-6 w-12 rounded-full bg-default-200"></div>
+                                </Skeleton>
+                            </div>
+                        </CardBody>
+                    </Card>
+                ))}
             </div>
         );
     }
