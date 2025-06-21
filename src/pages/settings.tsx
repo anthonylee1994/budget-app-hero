@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import {useForm, Controller} from "react-hook-form";
 import {Card, CardBody, CardHeader, Button, Input, addToast} from "@heroui/react";
-import {MainLayout} from "@/components/common/MainLayout";
 import {AvatarUploader} from "@/components/auth/AvatarUploader";
 import {useAuthStore} from "@/stores/authStore";
 
@@ -86,11 +85,9 @@ export const SettingsPage = () => {
 
     if (!user) {
         return (
-            <MainLayout>
-                <div className="flex items-center justify-center py-12">
-                    <p className="text-default-500">載入中...</p>
-                </div>
-            </MainLayout>
+            <div className="flex items-center justify-center py-12">
+                <p className="text-default-500">載入中...</p>
+            </div>
         );
     }
 

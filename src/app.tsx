@@ -1,59 +1,35 @@
 import {Navigate, Route, Routes} from "react-router-dom";
 import {IndexPage} from "./pages";
-import {ProtectedRoute} from "./components/auth/ProtectedRoute";
 import {DashboardPage} from "./pages/dashboard";
 import {CategoriesPage} from "./pages/categories";
-import {MainLayout} from "./components/common/MainLayout";
 import {TransactionsPage} from "./pages/transactions";
 import moment from "moment";
 import "moment/dist/locale/zh-hk";
 import {SettingsPage} from "./pages/settings";
 import {AuthPage} from "./pages/auth";
+import {ProtectedLayout} from "./components/common/ProtectedLayout";
+import {AuthLayout} from "./components/common/AuthLayout";
 
 moment.locale("zh-hk");
 
 export const App = () => {
     return (
-        <MainLayout>
-            <Routes>
-                <Route element={<IndexPage />} path="/" />
+        <Routes>
+            <Route element={<IndexPage />} path="/" />
+
+            <Route element={<AuthLayout />}>
                 <Route element={<AuthPage />} path="/register" />
                 <Route element={<AuthPage />} path="/login" />
-                <Route
-                    path="/dashboard"
-                    element={
-                        <ProtectedRoute>
-                            <DashboardPage />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/categories"
-                    element={
-                        <ProtectedRoute>
-                            <CategoriesPage />
-                        </ProtectedRoute>
-                    }
-                />
+            </Route>
 
-                <Route
-                    path="/transactions"
-                    element={
-                        <ProtectedRoute>
-                            <TransactionsPage />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/settings"
-                    element={
-                        <ProtectedRoute>
-                            <SettingsPage />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
-        </MainLayout>
+            <Route element={<ProtectedLayout />}>
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/categories" element={<CategoriesPage />} />
+                <Route path="/transactions" element={<TransactionsPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
+            </Route>
+
+            <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
     );
 };
