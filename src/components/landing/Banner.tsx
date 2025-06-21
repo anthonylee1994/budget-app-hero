@@ -20,7 +20,7 @@ export const Banner = () => {
                         <Button as={Link} to="/register" color="primary" size="lg">
                             免費註冊
                         </Button>
-                        <Button as={Link} to="/login" variant="bordered" size="lg">
+                        <Button as={Link} to="/login" variant="bordered" size="lg" className="border-primary-500 text-primary-500">
                             立即登入
                         </Button>
                     </div>

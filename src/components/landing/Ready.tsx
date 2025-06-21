@@ -11,7 +11,7 @@ export const Ready = () => {
                     <Button as={Link} to="/register" size="lg" className="bg-primary-500 text-white">
                         免費註冊
                     </Button>
-                    <Button as={Link} to="/login" variant="bordered" size="lg" className="border-primary-600 text-primary-600">
+                    <Button as={Link} to="/login" variant="bordered" size="lg" className="border-primary-500 text-primary-500">
                         立即登入
                     </Button>
                 </div>
