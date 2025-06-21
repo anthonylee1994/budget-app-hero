@@ -1,22 +1,11 @@
 import {LoginForm} from "@/components/auth/LoginForm";
 import {RegisterForm} from "@/components/auth/RegisterForm";
 import {Card, Tabs, Tab, CardBody} from "@heroui/react";
-import {useEffect, useState} from "react";
 import {useNavigate, useLocation} from "react-router-dom";
 
 export const AuthPage = () => {
     const navigate = useNavigate();
     const {pathname} = useLocation();
-
-    const [selectedTab, setSelectedTab] = useState<string>("login");
-
-    useEffect(() => {
-        if (pathname === "/register") {
-            setSelectedTab("register");
-        } else {
-            setSelectedTab("login");
-        }
-    }, [pathname]);
 
     const handleTabChange = (key: React.Key) => {
         if (key === "register") {
@@ -29,7 +18,7 @@ export const AuthPage = () => {
     return (
         <Card className="p-4 py-4">
             <CardBody className="p-0">
-                <Tabs fullWidth selectedKey={selectedTab} onSelectionChange={handleTabChange} classNames={{tabList: "w-full"}}>
+                <Tabs fullWidth selectedKey={pathname === "/register" ? "register" : "login"} onSelectionChange={handleTabChange} classNames={{tabList: "w-full"}}>
                     <Tab key="login" title="登入">
                         <LoginForm onSwitchToRegister={() => handleTabChange("register")} />
                     </Tab>
