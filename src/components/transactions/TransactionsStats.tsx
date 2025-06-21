@@ -1,36 +1,17 @@
-import {Card, CardBody, Skeleton} from "@heroui/react";
+import {Card, CardBody} from "@heroui/react";
 import {useTransactionStore} from "@/stores/transactionStore";
 import {NumberUtil} from "@/utils/NumberUtil";
 
 export const TransactionsStats = () => {
     const {summary, pagination, isLoading} = useTransactionStore();
 
-    if (isLoading) {
-        return (
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-                {Array.from({length: 4}).map((_, index) => (
-                    <Card key={index} className="transition-all duration-200">
-                        <CardBody className="p-4 text-end">
-                            <div className="mb-3">
-                                <Skeleton className="rounded-lg">
-                                    <div className="h-4 w-16 rounded-lg bg-default-200"></div>
-                                </Skeleton>
-                            </div>
-                            <div>
-                                <Skeleton className="rounded-lg">
-                                    <div className="h-8 w-24 rounded-lg bg-default-200"></div>
-                                </Skeleton>
-                            </div>
-                        </CardBody>
-                    </Card>
-                ))}
-            </div>
-        );
+    if (!summary || isLoading) {
+        return null;
     }
 
-    const totalIncome = summary?.total_income || 0;
-    const totalExpense = summary?.total_expenses || 0;
-    const netAmount = summary?.net_balance || 0;
+    const totalIncome = summary.total_income || 0;
+    const totalExpense = summary.total_expenses || 0;
+    const netAmount = summary.net_balance || 0;
     const transactionCount = pagination?.total_entries || 0;
 
     const statsData = [

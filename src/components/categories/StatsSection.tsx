@@ -1,15 +1,13 @@
 import React, {useMemo} from "react";
-import {Card, CardBody, Skeleton} from "@heroui/react";
+import {Card, CardBody} from "@heroui/react";
 import type {Category} from "@/types/Category";
-import {useCategoryStore} from "@/stores/categoryStore";
 
 interface StatsSectionProps {
+    categories: Category[];
     filteredCategories: Category[];
 }
 
-export const StatsSection: React.FC<StatsSectionProps> = ({filteredCategories}) => {
-    const {isLoading, categories} = useCategoryStore();
-
+export const StatsSection: React.FC<StatsSectionProps> = ({categories, filteredCategories}) => {
     const stats = useMemo(() => {
         const incomeCount = categories.filter(cat => cat.budget_type === "income").length;
         const expenseCount = categories.filter(cat => cat.budget_type === "expense").length;
@@ -21,29 +19,6 @@ export const StatsSection: React.FC<StatsSectionProps> = ({filteredCategories}) 
             displayed: filteredCategories.length,
         };
     }, [categories, filteredCategories]);
-
-    if (isLoading) {
-        return (
-            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-                {Array.from({length: 4}).map((_, index) => (
-                    <Card key={index} className="bg-content1">
-                        <CardBody className="p-4">
-                            <div className="mb-2">
-                                <Skeleton className="rounded-lg">
-                                    <div className="h-4 w-16 rounded-lg bg-default-200"></div>
-                                </Skeleton>
-                            </div>
-                            <div>
-                                <Skeleton className="rounded-lg">
-                                    <div className="h-9 w-12 rounded-lg bg-default-200"></div>
-                                </Skeleton>
-                            </div>
-                        </CardBody>
-                    </Card>
-                ))}
-            </div>
-        );
-    }
 
     const statCards = [
         {
