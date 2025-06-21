@@ -48,7 +48,10 @@ export const MainNavBar = () => {
                     <DropdownTrigger>
                         <NavbarItem className="hidden cursor-pointer select-none items-center sm:flex">
                             <Avatar src={user?.avatar_url} />
-                            <span className="ml-2">{user?.name}</span>
+                            <div className="ml-2 leading-5">
+                                <p className="text-md font-medium">{user?.name}</p>
+                                <p className="text-xs text-default-500">{user?.username}</p>
+                            </div>
                         </NavbarItem>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Static Actions">
@@ -83,7 +86,10 @@ export const MainNavBar = () => {
 
                 <NavbarMenuItem className="flex select-none items-center py-2">
                     <Avatar src={user?.avatar_url} />
-                    <span className="ml-2">{user?.name}</span>
+                    <div className="ml-2 leading-5">
+                        <p className="text-md font-medium">{user?.name}</p>
+                        <p className="text-xs text-default-500">{user?.username}</p>
+                    </div>
                 </NavbarMenuItem>
 
                 <NavbarMenuItem className="w-full">
