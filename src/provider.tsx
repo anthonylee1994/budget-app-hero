@@ -12,7 +12,7 @@ declare module "@react-types/shared" {
 export function Provider({children}: {children: React.ReactNode}) {
     return (
         <HeroUIProvider>
-            <NextThemesProvider attribute="class">
+            <NextThemesProvider attribute="class" defaultTheme="system">
                 <ToastProvider placement="bottom-center" toastOffset={20} toastProps={{timeout: 3000, shouldShowTimeoutProgress: true}} />
                 <main className="h-[100dvh] bg-background text-foreground">{children}</main>
             </NextThemesProvider>
