@@ -39,7 +39,7 @@ export const AuthPage = () => {
     };
 
     return (
-        <div className="mx-auto mt-[env(safe-area-inset-top)] max-w-md p-4 pb-[calc(env(safe-area-inset-bottom)+2rem)]">
+        <div className="mx-auto max-w-md p-4 pb-[calc(env(safe-area-inset-bottom)+2rem)] pt-[env(safe-area-inset-top)]">
             <Header title={selectedTab === "login" ? "歡迎回來" : "創建您的帳戶"} description={selectedTab === "login" ? "登入您的智慧理財帳戶" : "開始您的智慧理財之旅"} />
 
             <Card className="p-4 py-4">
@@ -56,7 +56,7 @@ export const AuthPage = () => {
                 </CardBody>
             </Card>
 
-            <div className="fixed right-4 top-4">
+            <div className="fixed right-4 top-[calc(env(safe-area-inset-top)+1rem)]">
                 <ThemeSwitcher />
             </div>
         </div>

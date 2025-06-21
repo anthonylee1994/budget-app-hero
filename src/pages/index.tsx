@@ -15,7 +15,7 @@ export const IndexPage = () => {
     }
 
     return (
-        <div className="pt-[calc(65px+env(safe-area-inset-top))]">
+        <div>
             <LandingNavBar />
             <Banner />
             <Statistics />
