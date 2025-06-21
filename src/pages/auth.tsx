@@ -5,6 +5,7 @@ import {Card, Tabs, Tab, CardBody} from "@heroui/react";
 import {useAuthStore} from "@/stores/authStore";
 import {useEffect, useState} from "react";
 import {useNavigate, useLocation} from "react-router-dom";
+import {ThemeSwitcher} from "@/components/common/ThemeSwitcher";
 
 export const AuthPage = () => {
     const navigate = useNavigate();
@@ -54,6 +55,10 @@ export const AuthPage = () => {
                     </Tabs>
                 </CardBody>
             </Card>
+
+            <div className="fixed right-4 top-4">
+                <ThemeSwitcher />
+            </div>
         </div>
     );
 };

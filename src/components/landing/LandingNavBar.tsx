@@ -1,6 +1,4 @@
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem} from "@heroui/navbar";
-import {Button} from "@heroui/button";
-import {Link} from "react-router-dom";
 import {Icon} from "@iconify/react";
 import {ThemeSwitcher} from "../common/ThemeSwitcher";
 
@@ -12,16 +10,6 @@ export const LandingNavBar = () => {
                 <span className="text-2xl font-light text-primary-500 dark:text-white">智慧理財</span>
             </NavbarBrand>
             <NavbarContent justify="end" className="gap-2">
-                <NavbarItem>
-                    <Button as={Link} to="/login" variant="light">
-                        登入
-                    </Button>
-                </NavbarItem>
-                <NavbarItem>
-                    <Button as={Link} to="/register" variant="shadow">
-                        註冊
-                    </Button>
-                </NavbarItem>
                 <NavbarItem>
                     <ThemeSwitcher />
                 </NavbarItem>
