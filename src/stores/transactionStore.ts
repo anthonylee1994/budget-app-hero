@@ -101,7 +101,6 @@ export const useTransactionStore = create<TransactionState>()(
 
                     if (filters.page) params.append("page", filters.page.toString());
                     if (filters.period) params.append("period", filters.period);
-                    if (filters.date) params.append("date", filters.date); // Pass as YYYY-MM-DD
                     if (filters.budget_type) params.append("budget_type", filters.budget_type);
                     if (filters.category_id) params.append("category_id", filters.category_id.toString());
                     if (filters.by_amount) params.append("by_amount", filters.by_amount);
