@@ -5,6 +5,7 @@ import {useCategoryStore} from "@/stores/categoryStore";
 import type {Category} from "@/types/Category";
 import {ColorPicker} from "./ColorPicker";
 import {IconPicker} from "./IconPicker";
+import {useIsDesktop} from "../hooks/useIsDesktop";
 
 interface EditModalProps {
     isOpen: boolean;
@@ -21,6 +22,7 @@ interface FormData {
 
 export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category}) => {
     const {createCategory, updateCategory, isLoading} = useCategoryStore();
+    const isDesktop = useIsDesktop();
 
     const {
         control,
@@ -76,7 +78,7 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
     };
 
     return (
-        <Modal isOpen={isOpen} onClose={handleClose} size="lg" placement="top" className="!mt-[calc(80px+env(safe-area-inset-top))]">
+        <Modal isOpen={isOpen} onClose={handleClose} size="lg" placement={isDesktop ? "center" : "top"} className="!mt-[calc(80px+env(safe-area-inset-top))]">
             <ModalContent>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <ModalHeader className="flex flex-col gap-1">{category ? "編輯分類" : "新增分類"}</ModalHeader>

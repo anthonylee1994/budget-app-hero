@@ -5,6 +5,7 @@ import {useTransactionStore} from "@/stores/transactionStore";
 import {useCategoryStore} from "@/stores/categoryStore";
 import type {Transaction} from "@/types/Transaction";
 import {parseAbsoluteToLocal, now, getLocalTimeZone, ZonedDateTime} from "@internationalized/date";
+import {useIsDesktop} from "../hooks/useIsDesktop";
 
 interface EditModalProps {
     isOpen: boolean;
@@ -22,6 +23,7 @@ interface FormData {
 export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, transaction}) => {
     const {createTransaction, updateTransaction, isLoading} = useTransactionStore();
     const {categories} = useCategoryStore();
+    const isDesktop = useIsDesktop();
 
     const {
         control,
@@ -88,7 +90,7 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, transactio
     };
 
     return (
-        <Modal isOpen={isOpen} onClose={handleClose} size="lg" placement="top" className="!mt-[calc(80px+env(safe-area-inset-top))]">
+        <Modal isOpen={isOpen} onClose={handleClose} size="lg" placement={isDesktop ? "center" : "top"} className="!mt-[calc(80px+env(safe-area-inset-top))]">
             <ModalContent>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <ModalHeader className="flex flex-col gap-1">{transaction ? "編輯交易" : "新增交易"}</ModalHeader>

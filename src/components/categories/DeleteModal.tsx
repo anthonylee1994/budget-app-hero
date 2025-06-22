@@ -3,6 +3,7 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Card, 
 import {useCategoryStore} from "@/stores/categoryStore";
 import type {Category} from "@/types/Category";
 import {Icon} from "@iconify/react";
+import {useIsDesktop} from "../hooks/useIsDesktop";
 
 interface Props {
     isOpen: boolean;
@@ -13,6 +14,7 @@ interface Props {
 export const DeleteModal: React.FC<Props> = ({isOpen, onClose, category}) => {
     const {deleteCategory, isLoading} = useCategoryStore();
     const [isDeleting, setIsDeleting] = React.useState(false);
+    const isDesktop = useIsDesktop();
 
     const handleDelete = async () => {
         setIsDeleting(true);
@@ -43,7 +45,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, category}) => {
     };
 
     return (
-        <Modal isOpen={isOpen} onClose={handleClose} size="md" placement="top" className="!mt-[calc(80px+env(safe-area-inset-top))]">
+        <Modal isOpen={isOpen} onClose={handleClose} size="md" placement={isDesktop ? "center" : "top"} className="!mt-[calc(80px+env(safe-area-inset-top))]">
             <ModalContent>
                 <ModalHeader className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">

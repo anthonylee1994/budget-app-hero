@@ -1,7 +1,7 @@
+import {useIsDesktop} from "@/components/hooks/useIsDesktop";
 import {Icon} from "@iconify/react";
 import {motion, useMotionValue, useSpring, useTransform} from "framer-motion";
 import {useRef} from "react";
-import {useMediaQuery} from "usehooks-ts";
 
 interface Props {
     icon: string;
@@ -21,7 +21,7 @@ export const Item = ({icon, title, description}: Props) => {
     const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
     const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
 
-    const isDesktop = useMediaQuery("(min-width: 1024px)");
+    const isDesktop = useIsDesktop();
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!ref.current || !isDesktop) return;

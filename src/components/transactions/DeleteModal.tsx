@@ -5,6 +5,7 @@ import type {Transaction} from "@/types/Transaction";
 import moment from "moment";
 import {Icon} from "@iconify/react";
 import {NumberUtil} from "@/utils/NumberUtil";
+import {useIsDesktop} from "../hooks/useIsDesktop";
 
 interface Props {
     isOpen: boolean;
@@ -15,6 +16,7 @@ interface Props {
 export const DeleteModal: React.FC<Props> = ({isOpen, onClose, transaction}) => {
     const isIncome = transaction.category.budget_type === "income";
     const amount = transaction.amount;
+    const isDesktop = useIsDesktop();
 
     const {deleteTransaction, isLoading} = useTransactionStore();
     const [isDeleting, setIsDeleting] = React.useState(false);
@@ -48,7 +50,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, transaction}) => 
     };
 
     return (
-        <Modal isOpen={isOpen} onClose={handleClose} size="md" placement="top" className="!mt-[calc(80px+env(safe-area-inset-top))]">
+        <Modal isOpen={isOpen} onClose={handleClose} size="md" placement={isDesktop ? "center" : "top"} className="!mt-[calc(80px+env(safe-area-inset-top))]">
             <ModalContent>
                 <ModalHeader className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
