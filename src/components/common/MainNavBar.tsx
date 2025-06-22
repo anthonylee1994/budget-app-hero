@@ -25,7 +25,13 @@ export const MainNavBar = () => {
     const navigate = useNavigate();
 
     return (
-        <Navbar className="fixed pt-[env(safe-area-inset-top)]" isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} maxWidth="full">
+        <Navbar
+            className="fixed pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pt-[env(safe-area-inset-top)]"
+            isBordered
+            isMenuOpen={isMenuOpen}
+            onMenuOpenChange={setIsMenuOpen}
+            maxWidth="full"
+        >
             <NavbarContent>
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="md:hidden" />
                 <NavbarBrand>

@@ -4,7 +4,7 @@ import {ThemeSwitcher} from "../common/ThemeSwitcher";
 
 export const LandingNavBar = () => {
     return (
-        <Navbar isBordered className="fixed pt-[env(safe-area-inset-top)]">
+        <Navbar isBordered className="fixed pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pt-[env(safe-area-inset-top)]">
             <NavbarBrand>
                 <Icon icon="fa-solid:wallet" className="mr-2 select-none text-2xl text-primary-500 dark:text-white" />
                 <span className="select-none text-2xl font-light text-primary-500 dark:text-white">智慧理財</span>

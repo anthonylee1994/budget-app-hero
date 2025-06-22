@@ -6,7 +6,7 @@ export const ProtectedLayout = () => {
     return (
         <ProtectedRoute>
             <MainNavBar />
-            <div className="container mx-auto max-w-6xl space-y-6 p-4 !pt-[calc(80px+env(safe-area-inset-top))] pb-[calc(env(safe-area-inset-bottom)+1rem)] lg:p-8 lg:!pt-[calc(90px+env(safe-area-inset-top))]">
+            <div className="container mx-auto max-w-6xl space-y-6 p-4 !pt-[calc(80px+env(safe-area-inset-top))] pb-[calc(env(safe-area-inset-bottom)+1rem)] pl-[calc(env(safe-area-inset-left)+16px)] pr-[calc(env(safe-area-inset-right)+16px)] lg:p-8 lg:!pt-[calc(90px+env(safe-area-inset-top))]">
                 <Outlet />
             </div>
         </ProtectedRoute>

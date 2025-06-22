@@ -76,7 +76,7 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
     };
 
     return (
-        <Modal isOpen={isOpen} onClose={handleClose} size="lg" placement="center">
+        <Modal isOpen={isOpen} onClose={handleClose} size="lg" placement="top" className="!mt-[calc(80px+env(safe-area-inset-top))]">
             <ModalContent>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <ModalHeader className="flex flex-col gap-1">{category ? "編輯分類" : "新增分類"}</ModalHeader>

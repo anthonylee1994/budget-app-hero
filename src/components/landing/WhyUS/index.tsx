@@ -3,7 +3,7 @@ import {Item} from "./Item";
 
 export const WhyUS = () => {
     return (
-        <div className="bg-default-100">
+        <div className="bg-default-100 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
             <div className="mx-auto max-w-5xl p-5 py-10 text-center md:pb-20">
                 <Chip color="primary" size="lg" className="my-4">
                     🚀 強大功能

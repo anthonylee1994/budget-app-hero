@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 export const Ready = () => {
     return (
-        <div className="bg-primary-100">
+        <div className="bg-primary-100 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
             <div className="mx-auto max-w-5xl px-8 py-10 text-center md:p-20">
                 <div className="mb-4 text-2xl font-bold text-default-900 md:text-4xl">準備開始您的理財之旅嗎？</div>
                 <div className="mb-8 text-lg text-default-600">加入我們，讓智慧理財成為您生活的一部分。</div>

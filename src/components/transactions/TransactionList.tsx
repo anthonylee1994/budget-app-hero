@@ -42,7 +42,7 @@ export const TransactionList: React.FC<TransactionListProps> = ({onEditTransacti
     return (
         <div className="space-y-6">
             {/* Transaction Grid */}
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {transactions.map(transaction => (
                     <TransactionCard key={transaction.id} transaction={transaction} onEdit={onEditTransaction} onDelete={onDeleteTransaction} />
                 ))}
