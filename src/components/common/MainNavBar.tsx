@@ -40,8 +40,8 @@ export const MainNavBar = () => {
                 </NavbarBrand>
             </NavbarContent>
             <NavbarContent className="hidden gap-8 md:flex" justify="center">
-                <Tabs size="lg" color="primary" radius="full" fullWidth selectedKey={pathname} onSelectionChange={key => (key === pathname ? undefined : navigate(key as string))}>
-                    {navLinks.map(link => (
+                <Tabs items={navLinks} size="lg" color="primary" radius="full" selectedKey={pathname} onSelectionChange={key => (key === pathname ? undefined : navigate(key as string))}>
+                    {link => (
                         <Tab
                             key={link.href}
                             title={
@@ -51,7 +51,7 @@ export const MainNavBar = () => {
                                 </div>
                             }
                         />
-                    ))}
+                    )}
                 </Tabs>
             </NavbarContent>
             <NavbarContent justify="end">
