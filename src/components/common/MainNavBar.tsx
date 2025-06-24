@@ -22,16 +22,7 @@ export const MainNavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const {pathname} = useLocation();
     const {user, logout} = useAuthStore();
-    const [selectedTab, setSelectedTab] = useState<string | number>(pathname);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        setSelectedTab(pathname);
-    }, [pathname]);
-
-    useEffect(() => {
-        navigate(selectedTab as string);
-    }, [selectedTab]);
 
     return (
         <Navbar
@@ -49,7 +40,7 @@ export const MainNavBar = () => {
                 </NavbarBrand>
             </NavbarContent>
             <NavbarContent className="hidden gap-8 md:flex" justify="center">
-                <Tabs size="lg" color="primary" radius="full" fullWidth selectedKey={selectedTab} onSelectionChange={setSelectedTab}>
+                <Tabs size="lg" color="primary" radius="full" fullWidth selectedKey={pathname} onSelectionChange={key => (key === pathname ? undefined : navigate(key as string))}>
                     {navLinks.map(link => (
                         <Tab
                             key={link.href}
