@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Navbar, NavbarMenuToggle, NavbarContent, NavbarBrand, NavbarItem, NavbarMenu, NavbarMenuItem} from "@heroui/navbar";
 import {Link as RouterLink, useLocation, useNavigate} from "react-router-dom";
 import {Avatar, Divider, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link, Tab, Tabs} from "@heroui/react";
@@ -22,7 +22,16 @@ export const MainNavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const {pathname} = useLocation();
     const {user, logout} = useAuthStore();
+    const [selectedTab, setSelectedTab] = useState<string | number>(pathname);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setSelectedTab(pathname);
+    }, [pathname]);
+
+    useEffect(() => {
+        navigate(selectedTab as string);
+    }, [selectedTab]);
 
     return (
         <Navbar
@@ -40,7 +49,7 @@ export const MainNavBar = () => {
                 </NavbarBrand>
             </NavbarContent>
             <NavbarContent className="hidden gap-8 md:flex" justify="center">
-                <Tabs size="lg" color="primary" radius="full" fullWidth selectedKey={pathname} onSelectionChange={key => (key === pathname ? undefined : navigate(key as string))}>
+                <Tabs size="lg" color="primary" radius="full" fullWidth selectedKey={selectedTab} onSelectionChange={setSelectedTab}>
                     {navLinks.map(link => (
                         <Tab
                             key={link.href}
