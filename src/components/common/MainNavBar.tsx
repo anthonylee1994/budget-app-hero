@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Navbar, NavbarMenuToggle, NavbarContent, NavbarBrand, NavbarItem, NavbarMenu, NavbarMenuItem} from "@heroui/navbar";
 import {Link as RouterLink, useLocation, useNavigate} from "react-router-dom";
-import {Avatar, Divider, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link} from "@heroui/react";
+import {Avatar, Divider, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link, Tab, Tabs} from "@heroui/react";
 import {useAuthStore} from "@/stores/authStore";
 import {Icon} from "@iconify/react";
 import {ThemeSwitcher} from "./ThemeSwitcher";
@@ -40,14 +40,19 @@ export const MainNavBar = () => {
                 </NavbarBrand>
             </NavbarContent>
             <NavbarContent className="hidden gap-8 md:flex" justify="center">
-                {navLinks.map(link => (
-                    <NavbarItem isActive={pathname === link.href} key={link.href}>
-                        <Link as={RouterLink} to={link.href} size="lg" className={`${pathname === link.href ? "text-primary-500" : "text-default-800"}`}>
-                            {link.icon && <Icon icon={link.icon} className="mr-2" />}
-                            {link.label}
-                        </Link>
-                    </NavbarItem>
-                ))}
+                <Tabs size="lg" color="primary" radius="full" fullWidth selectedKey={pathname} onSelectionChange={key => (key === pathname ? undefined : navigate(key as string))}>
+                    {navLinks.map(link => (
+                        <Tab
+                            key={link.href}
+                            title={
+                                <div className="flex items-center justify-center">
+                                    {link.icon && <Icon icon={link.icon} className="mr-2" />}
+                                    {link.label}
+                                </div>
+                            }
+                        />
+                    ))}
+                </Tabs>
             </NavbarContent>
             <NavbarContent justify="end">
                 <Dropdown>
