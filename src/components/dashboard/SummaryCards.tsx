@@ -1,13 +1,34 @@
-import {Card} from "@heroui/react";
-import {CardBody} from "@heroui/react";
+import {Card, CardBody, Skeleton} from "@heroui/react";
 import {useSummaryStore} from "@/stores/summaryStore";
 import {Icon} from "@iconify/react";
 import {NumberUtil} from "@/utils/NumberUtil";
 
 export const SummaryCards = () => {
-    const {summaryData} = useSummaryStore();
+    const {summaryData, isLoading} = useSummaryStore();
 
-    if (!summaryData) return null;
+    if (!summaryData || isLoading) {
+        return (
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                {Array.from({length: 3}).map((_, index) => (
+                    <Card key={index}>
+                        <CardBody className="flex flex-row items-center justify-between gap-4 p-4">
+                            <Skeleton className="flex rounded-full">
+                                <div className="h-12 w-12 rounded-full bg-default-200"></div>
+                            </Skeleton>
+                            <div className="flex flex-col items-end space-y-2 text-end">
+                                <Skeleton className="w-16 rounded-lg">
+                                    <div className="h-4 w-16 rounded-lg bg-default-200"></div>
+                                </Skeleton>
+                                <Skeleton className="w-40 rounded-lg">
+                                    <div className="h-[28px] w-24 rounded-lg bg-default-300"></div>
+                                </Skeleton>
+                            </div>
+                        </CardBody>
+                    </Card>
+                ))}
+            </div>
+        );
+    }
 
     return (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
