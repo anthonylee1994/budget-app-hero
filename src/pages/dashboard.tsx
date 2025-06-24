@@ -10,7 +10,7 @@ import {TrendBarChart} from "@/components/dashboard/TrendBarChart";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 export const DashboardPage = () => {
-    const {summaryData, isLoading, selectedPeriod, fetchSummary, setPeriod} = useSummaryStore();
+    const {summaryData, selectedPeriod, fetchSummary, setPeriod} = useSummaryStore();
 
     const handlePeriodChange = (period: "weekly" | "monthly" | "yearly") => {
         setPeriod(period);
