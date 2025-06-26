@@ -90,7 +90,7 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, transactio
     };
 
     return (
-        <Modal isOpen={isOpen} onClose={handleClose} size="lg" placement={isDesktop ? "center" : "top"} className="!mt-[calc(80px+env(safe-area-inset-top))]">
+        <Modal backdrop="blur" isOpen={isOpen} onClose={handleClose} size="lg" placement={isDesktop ? "center" : "top"} className="!mt-[calc(80px+env(safe-area-inset-top))]">
             <ModalContent>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <ModalHeader className="flex flex-col gap-1">{transaction ? "編輯交易" : "新增交易"}</ModalHeader>

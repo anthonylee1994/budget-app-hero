@@ -45,7 +45,7 @@ export const DeleteModal: React.FC<Props> = ({isOpen, onClose, category}) => {
     };
 
     return (
-        <Modal isOpen={isOpen} onClose={handleClose} size="md" placement={isDesktop ? "center" : "top"} className="!mt-[calc(80px+env(safe-area-inset-top))]">
+        <Modal backdrop="blur" isOpen={isOpen} onClose={handleClose} size="md" placement={isDesktop ? "center" : "top"} className="!mt-[calc(80px+env(safe-area-inset-top))]">
             <ModalContent>
                 <ModalHeader className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
