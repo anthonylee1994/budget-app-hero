@@ -84,6 +84,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({onSwitchToRegister}) => {
                     labelPlacement="outside"
                     className="mb-4"
                     disabled={isSubmitting}
+                    autoComplete="username"
                 />
                 <Input
                     {...registerField("password", {
@@ -103,6 +104,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({onSwitchToRegister}) => {
                         </Button>
                     }
                     disabled={isSubmitting}
+                    autoComplete="current-password"
                 />
                 <Button type="submit" color="primary" size="lg" className="mt-4 w-full" isLoading={isSubmitting}>
                     登入

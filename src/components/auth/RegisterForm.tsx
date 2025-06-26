@@ -136,6 +136,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({onSwitchToLogin}) => 
                     labelPlacement="outside"
                     className="mb-4"
                     disabled={isSubmitting}
+                    autoComplete="username"
                 />
                 <Input
                     {...registerField("name", {
@@ -157,6 +158,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({onSwitchToLogin}) => 
                     isInvalid={!!errors.name}
                     errorMessage={errors.name?.message}
                     disabled={isSubmitting}
+                    autoComplete="given-name"
                 />
                 <Input
                     {...registerField("password", {
@@ -180,6 +182,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({onSwitchToLogin}) => 
                         </Button>
                     }
                     disabled={isSubmitting}
+                    autoComplete="new-password"
                 />
                 <Input
                     {...registerField("confirm_password", {
@@ -205,6 +208,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({onSwitchToLogin}) => 
                         </Button>
                     }
                     disabled={isSubmitting}
+                    autoComplete="new-password"
                 />
 
                 <ReCAPTCHA theme={theme === "dark" ? "dark" : "light"} ref={recaptchaRef} sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY} onChange={handleCaptchaChange} />
