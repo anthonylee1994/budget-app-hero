@@ -181,7 +181,15 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, transactio
                                 control={control}
                                 rules={{required: "請選擇日期"}}
                                 render={({field}) => (
-                                    <DatePicker name={field.name} value={field.value} defaultValue={now(getLocalTimeZone())} onChange={field.onChange} hideTimeZone showMonthAndYearPickers />
+                                    <DatePicker
+                                        name={field.name}
+                                        value={field.value}
+                                        defaultValue={now(getLocalTimeZone())}
+                                        onChange={field.onChange}
+                                        hideTimeZone
+                                        showMonthAndYearPickers
+                                        aria-label="選擇交易日期"
+                                    />
                                 )}
                             />
 

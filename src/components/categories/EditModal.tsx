@@ -128,7 +128,7 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
                                 )}
                             />
 
-                            <Controller name="icon" control={control} render={({field}) => <IconPicker value={field.value} onChange={field.onChange} />} />
+                            <Controller name="icon" control={control} render={({field}) => <IconPicker value={field.value} onChange={field.onChange} aria-label="選擇圖示" />} />
 
                             <Controller
                                 name="color"
@@ -136,7 +136,7 @@ export const EditModal: React.FC<EditModalProps> = ({isOpen, onClose, category})
                                 rules={{
                                     required: "請選擇顏色",
                                 }}
-                                render={({field}) => <ColorPicker {...field} />}
+                                render={({field}) => <ColorPicker {...field} aria-label="選擇顏色" />}
                             />
                         </div>
                     </ModalBody>

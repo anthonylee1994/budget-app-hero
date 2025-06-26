@@ -32,13 +32,13 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({category, onEdit, onD
                 </Card>
             </DropdownTrigger>
             <DropdownMenu>
-                <DropdownItem key="edit" onPress={() => onEdit(category)}>
+                <DropdownItem key="edit" textValue="編輯" onPress={() => onEdit(category)}>
                     <div className="flex items-center gap-2">
                         <Icon icon="mdi:pencil" className="text-lg" />
                         編輯
                     </div>
                 </DropdownItem>
-                <DropdownItem key="delete" onPress={() => onDelete(category)}>
+                <DropdownItem key="delete" textValue="刪除" onPress={() => onDelete(category)}>
                     <div className="flex items-center gap-2 text-danger-500">
                         <Icon icon="mdi:trash-can" className="text-lg" />
                         刪除

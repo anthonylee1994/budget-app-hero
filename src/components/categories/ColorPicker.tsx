@@ -48,13 +48,13 @@ const DEFAULT_COLORS = [
     "#4A5568",
 ];
 
-export const ColorPicker: React.FC<Props> = ({value, onChange}: Props) => {
+export const ColorPicker = React.forwardRef<HTMLDivElement, Props>(({value, onChange}, ref) => {
     const handleColorSelect = (color: string) => {
         onChange(color);
     };
 
     return (
-        <div className="flex flex-col space-y-4">
+        <div ref={ref} className="flex flex-col space-y-4">
             {/* Current Color Preview */}
             <div className="flex w-full items-center space-x-3">
                 <div
@@ -95,4 +95,6 @@ export const ColorPicker: React.FC<Props> = ({value, onChange}: Props) => {
             </div>
         </div>
     );
-};
+});
+
+ColorPicker.displayName = "ColorPicker";

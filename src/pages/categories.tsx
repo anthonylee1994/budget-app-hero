@@ -59,7 +59,7 @@ export const CategoriesPage = () => {
                 </Button>
             </div>
             <div className="flex flex-col items-center gap-4 sm:flex-row">
-                <Input fullWidth size="lg" placeholder="搜尋分類名稱..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
+                <Input fullWidth size="lg" placeholder="搜尋分類名稱..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} aria-label="搜尋分類名稱" />
                 <Select
                     size="lg"
                     className="w-full flex-shrink-0 sm:w-48"
@@ -68,6 +68,7 @@ export const CategoriesPage = () => {
                         const selectedKey = Array.from(keys)[0] as "all" | "income" | "expense";
                         setTypeFilter(selectedKey || "all");
                     }}
+                    aria-label="選擇分類類型"
                 >
                     <SelectItem key="all">全部類型</SelectItem>
                     <SelectItem key="income">收入</SelectItem>
