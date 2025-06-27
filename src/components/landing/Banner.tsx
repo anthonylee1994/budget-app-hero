@@ -15,7 +15,7 @@ export const Banner = () => {
                         <div className="mb-2">掌控您的財務未來</div>
                         <div className="mb-2 text-primary-600">輕鬆管理每一筆收支</div>
                     </div>
-                    <div className="mb-8 mt-4 text-lg text-default-600">使用我們的智慧預算應用程式，讓您輕鬆追蹤收入與支出，制定明智的財務決策，實現財務自由。</div>
+                    <div className="mb-8 mt-4 text-lg text-default-600">使用我們的預算應用程式，讓您輕鬆追蹤收入與支出，制定明智的財務決策，實現財務自由。</div>
                     <div className="flex gap-4">
                         <Button as={Link} to="/register" color="primary" size="lg">
                             免費註冊

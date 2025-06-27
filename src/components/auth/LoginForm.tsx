@@ -39,7 +39,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({onSwitchToRegister}) => {
 
             addToast({
                 title: "登入成功！",
-                description: "歡迎回到智慧理財！",
+                description: "歡迎回到 BudgetHero！",
                 color: "success",
             });
 

@@ -76,7 +76,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({onSwitchToLogin}) => 
 
             addToast({
                 title: "註冊成功！",
-                description: "歡迎加入智慧理財！",
+                description: "歡迎加入 BudgetHero！",
                 color: "success",
             });
 
