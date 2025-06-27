@@ -40,17 +40,16 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({transaction, on
                             </div>
                         </div>
                     </CardBody>
-                    <CardFooter className="flex justify-between border-t-1 border-t-default-200 p-4 md:px-6">
+                    <CardFooter className="flex justify-between border-t-1 border-t-default-200 bg-default-100/50 p-4 md:px-6">
                         <div className="flex w-full justify-between gap-4">
                             <div className="flex flex-col gap-1 text-left">
-                                <span className="text-small font-medium text-default-600">交易時間</span>
                                 <div className="flex items-center gap-2">
+                                    <Icon icon="mdi:calendar-clock" className="text-lg text-default-500" />
                                     <span className="font-mono text-small text-default-700">{moment(transaction.date).format("YYYY-MM-DD HH:mm")}</span>
                                 </div>
                             </div>
 
                             <div className="flex flex-col items-end gap-1">
-                                <span className="text-small font-medium text-default-600">交易類型</span>
                                 <Chip color={isIncome ? "success" : "danger"} variant="flat" size="sm" className="w-fit">
                                     {isIncome ? "收入" : "支出"}
                                 </Chip>
