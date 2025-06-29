@@ -8,6 +8,7 @@ import {StatsSection} from "@/components/categories/StatsSection";
 import {EditModal} from "@/components/categories/EditModal";
 import {DeleteModal} from "@/components/categories/DeleteModal";
 import {Icon} from "@iconify/react";
+import {Haptics, ImpactStyle} from "@capacitor/haptics";
 
 export const CategoriesPage = () => {
     const {categories} = useCategoryStore();
@@ -40,6 +41,7 @@ export const CategoriesPage = () => {
     };
 
     const handleOpenDeleteModal = (category: Category) => {
+        Haptics.impact({style: ImpactStyle.Medium});
         setDeletingCategory(category);
         setIsDeleteModalOpen(true);
     };

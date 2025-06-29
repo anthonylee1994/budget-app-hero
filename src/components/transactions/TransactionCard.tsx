@@ -4,6 +4,7 @@ import type {Transaction} from "@/types/Transaction";
 import moment from "moment";
 import {Icon} from "@iconify/react";
 import {NumberUtil} from "@/utils/NumberUtil";
+import {Haptics, ImpactStyle} from "@capacitor/haptics";
 
 interface TransactionCardProps {
     transaction: Transaction;
@@ -18,7 +19,7 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({transaction, on
     return (
         <Dropdown>
             <DropdownTrigger>
-                <Card isPressable className="transition-all duration-300">
+                <Card isPressable className="transition-all duration-300" onClick={() => Haptics.impact({style: ImpactStyle.Medium})}>
                     <CardBody className="gap-4 p-4 md:px-6">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">

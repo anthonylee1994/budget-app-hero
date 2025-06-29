@@ -2,6 +2,7 @@ import React from "react";
 import {Card, CardBody, Chip, Dropdown, DropdownTrigger, DropdownItem, DropdownMenu} from "@heroui/react";
 import type {Category} from "@/types/Category";
 import {Icon} from "@iconify/react";
+import {Haptics, ImpactStyle} from "@capacitor/haptics";
 
 interface CategoryCardProps {
     category: Category;
@@ -13,7 +14,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({category, onEdit, onD
     return (
         <Dropdown>
             <DropdownTrigger>
-                <Card isPressable className="transition-all duration-300">
+                <Card isPressable className="transition-all duration-300" onClick={() => Haptics.impact({style: ImpactStyle.Medium})}>
                     <CardBody className="gap-3">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">

@@ -8,6 +8,7 @@ import {DeleteModal} from "@/components/transactions/DeleteModal";
 import {TransactionsStats} from "@/components/transactions/TransactionsStats";
 import {Icon} from "@iconify/react";
 import {useCategoryStore} from "@/stores/categoryStore";
+import {Haptics, ImpactStyle} from "@capacitor/haptics";
 
 export const TransactionsPage = () => {
     const {fetchCategories} = useCategoryStore();
@@ -31,6 +32,7 @@ export const TransactionsPage = () => {
     };
 
     const handleDeleteTransaction = (transaction: Transaction) => {
+        Haptics.impact({style: ImpactStyle.Medium});
         setDeletingTransaction(transaction);
         setIsDeleteModalOpen(true);
     };
