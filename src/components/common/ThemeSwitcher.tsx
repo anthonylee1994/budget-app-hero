@@ -34,6 +34,11 @@ export const ThemeSwitcher = () => {
                 selectedKeys={[theme || "system"]}
                 selectionMode="single"
                 onSelectionChange={keys => {
+                    if (!Array.from(keys)[0]) {
+                        setTheme("system");
+                        return;
+                    }
+
                     const selectedTheme = Array.from(keys)[0] as string;
                     setTheme(selectedTheme);
                 }}
